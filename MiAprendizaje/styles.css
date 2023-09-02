@@ -1,0 +1,73 @@
+body
+{
+    font-family: 'Arial';
+    background: #353a45;
+    color: #b4b5b8;
+}
+
+.introduccion h1
+{
+    color: #b4b5b8;
+    margin: 2rem 0rem 1rem 2rem;
+}
+
+.introduccion p
+{
+    color: #ebebeb;
+    font-weight: bolder;
+    margin: 1rem 0rem 2rem 2rem;
+    padding: 0rem 12rem 0rem 0rem;
+}
+
+h2, h3, h4
+{
+    cursor: pointer;
+}
+
+blockquote
+{
+    text-align: end;
+    font-style: italic;
+}
+
+.secundaria,
+.bachillerato,
+.bachilleratointernacional,
+.licenciatura,
+.aprendizajeautodidacta
+{
+    color: #000000;
+    margin: 1rem 2rem;
+    padding: 0.001rem 0.9rem;
+    border-radius: 1rem;
+}
+
+.secundaria
+{
+    background: #F4B183;
+}
+
+.bachillerato
+{
+    background: #FFE699;
+}
+
+.bachillerato p
+{
+    color: #000000;
+}
+
+.bachilleratointernacional
+{
+    background: #DAE3F3;
+}
+
+.licenciatura
+{
+    background: #A6A6A6;
+}
+
+.aprendizajeautodidacta
+{
+    background: #C5E0B4;
+}
