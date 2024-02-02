@@ -1,0 +1,56 @@
+.Job
+{
+  background-color: #E6E6E6;
+  margin: 10px 0;
+  border-radius: 20px;
+  border-style: solid;
+  border-color: #354806;
+  vertical-align: middle;
+  font-family: Arial, Helvetica, sans-serif;
+  overflow: hidden;
+}
+
+.Job-Image img
+{
+  width: 200px;
+}
+
+.text
+{
+  margin: 4px 15px;
+  align-items: center;
+  height: 100%;
+}
+
+/* Mostrar esta página en pantallas estilo desktop */
+@media only screen and (min-width: 768px)
+{
+  .Job
+  {
+    display: flex;
+    height: 100%;
+    align-items: center;
+  }
+
+  .Job-Image
+  {
+    height: 100%;
+    align-items: center;
+    background-color: #FFFFFF;
+  }
+}
+
+/* Mostrar esta página en pantallas estilo mobile */
+@media only screen and (max-width: 767px)
+{
+  .Job
+  {
+    text-align: center;
+  }
+
+  .Job-Image
+  {
+    width: 100%;
+    background-color: #FFFFFF;
+  }
+}
