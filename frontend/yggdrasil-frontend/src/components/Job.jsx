@@ -5,7 +5,9 @@ function Job({image, title, period, role, description})
   return (
     <div className="Job">
       <div className="Job-Image">
-        <img src={image} alt='HermesCorp logo' />
+        <div className="Job-Center-Image">
+          <img src={image} alt={title + ' logo'} />
+        </div>
       </div>
 
       <div className="text">

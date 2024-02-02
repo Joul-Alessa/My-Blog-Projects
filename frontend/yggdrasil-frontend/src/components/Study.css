@@ -1,4 +1,4 @@
-.Job
+.Study
 {
   background-color: #E6E6E6;
   margin: 10px 0;
@@ -10,7 +10,7 @@
   overflow: hidden;
 }
 
-.Job-Image img
+.Study-Image img
 {
   width: 200px;
 }
@@ -25,18 +25,18 @@
 /* Mostrar esta página en pantallas estilo desktop */
 @media only screen and (min-width: 768px)
 {
-  .Job
+  .Study
   {
     display: flex;
     align-items: stretch;
   }
 
-  .Job-Image
+  .Study-Image
   {
     background-color: #FFFFFF;
   }
 
-  .Job-Center-Image
+  .Study-Center-Image
   {
     display: flex;
     height: 100%;
@@ -48,12 +48,12 @@
 /* Mostrar esta página en pantallas estilo mobile */
 @media only screen and (max-width: 767px)
 {
-  .Job
+  .Study
   {
     text-align: center;
   }
 
-  .Job-Image
+  .Study-Image
   {
     width: 100%;
     background-color: #FFFFFF;
