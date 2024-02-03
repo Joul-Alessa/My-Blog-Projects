@@ -14,7 +14,7 @@ function Job({image, title, period, role, description})
         <p className='Job-Title'>{title}</p>
         <p className='Job-Period'>{period}</p>
         <p className='Job-Role'>{role}</p>
-        <p className='Job-Description'>{description}</p>
+        <p className='Job-Description' dangerouslySetInnerHTML={{__html: description}}></p>
       </div>
     </div>
   );

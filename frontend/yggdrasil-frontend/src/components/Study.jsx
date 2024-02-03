@@ -14,7 +14,7 @@ function Study({image, institution, period, study, description})
         <p className='Study-Title'>{institution}</p>
         <p className='Study-Period'>{period}</p>
         <p className='Study-Role'>{study}</p>
-        <p className='Study-Description'>{description}</p>
+        <p className='Study-Description' dangerouslySetInnerHTML={{__html: description}}></p>
       </div>
     </div>
   );
