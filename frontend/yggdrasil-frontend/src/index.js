@@ -5,6 +5,7 @@ import Introduction from './components/Introduction'
 import TitleSection from './components/TitleSection';
 import Job from './components/Job';
 import Study from './components/Study';
+import TechnologyChapter from './components/Technology-Chapter';
 import reportWebVitals from './reportWebVitals';
 
 import HermesCorp from './assets/images/02-professional-experience/hermescorp.jpg'
@@ -29,6 +30,8 @@ root.render(
     <Study image={BachUAA} institution={'High School Center of the Aguascalientes Autonomous University'} period={'Jul 2015 - Jun 2018'} study={'General High School Studies'} description={'Grade performance of 9.5 (3.84 GPA equivalent). Fifth place and awardee of honorable mention in final phase of the 2017 Mathematics Mexican Olimpiad, region Aguascalientes.'}/>
 
     <TitleSection title = 'Technologies' />
+    <TechnologyChapter />
+
     <TitleSection title = 'My Projects' />
     <TitleSection title = 'Learning Projects' />
     <TitleSection title = 'Projects to get to know me better' />
