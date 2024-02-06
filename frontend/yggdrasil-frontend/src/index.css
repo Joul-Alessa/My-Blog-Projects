@@ -5,9 +5,10 @@ body
   background-position: center;
 }
 
-.MyProjects
+.MyProjects, .LearningProjects, .ProjectsGetToKnowMe, .RecommendedResources
 {
-  display: inline-flex;
+  display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  align-items: stretch;
 }

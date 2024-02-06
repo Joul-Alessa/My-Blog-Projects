@@ -11,10 +11,28 @@ import reportWebVitals from './reportWebVitals';
 
 import HermesCorp from './assets/images/02-professional-experience/hermescorp.jpg'
 import Freelancer from './assets/images/02-professional-experience/freelancer.jpg'
+
 import BachUAA from './assets/images/03-studies/bachuaa.jpg'
 import BI from './assets/images/03-studies/bi.jpg'
 import UAA from './assets/images/03-studies/uaa.jpg'
 import Coursera from './assets/images/03-studies/coursera.jpg'
+
+import TheFirstCRUD from './assets/images/05-my-projects/the-first-crud.png'
+import KaggleCommonlit from './assets/images/05-my-projects/kaggle-commonlit.png'
+import UAAICIThesis from './assets/images/05-my-projects/uaa-ici-thesis.png'
+import BrackleyHQ from './assets/images/05-my-projects/brackley-hq.jpg'
+import DailyCodingProblem from './assets/images/05-my-projects/daily-coding-problem.jpg'
+import UAAICI from './assets/images/05-my-projects/uaa-ici.png'
+
+import AppCitasBack from './assets/images/06-learning-projects/appcitas-back.png'
+import AppCitasFront from './assets/images/06-learning-projects/appcitas-front.png'
+import TwelveDSProjects from './assets/images/06-learning-projects/12-data-science-projects.jpg'
+import KaggleTitanicML from './assets/images/06-learning-projects/kaggle-titanicml.png'
+import VuejsTodoApp from './assets/images/06-learning-projects/vuejs-todoapp.jpg'
+import ThreejsTutorial from './assets/images/06-learning-projects/threejs-tutorial.jpg'
+import TkinterProjects from './assets/images/06-learning-projects/tkinter-projects.png'
+
+import MiCamino from './assets/images/07-get-to-know-me-better/mi-camino.png'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -35,16 +53,35 @@ root.render(
 
     <TitleSection title = 'My Projects' />
     <div className='MyProjects'>
-      <Project name={'The First CRUD'} image={Freelancer} technologies={'HTML, CSS, JavaScript'} description={'Project to start learning frontend vanilla'} />
-      <Project name={''} image={''} technologies={''} description={''} />
-      <Project name={''} image={''} technologies={''} description={''} />
-      <Project name={''} image={''} technologies={''} description={''} />
+      <Project name={'UAA ICI: Thesis'} image={UAAICIThesis} technologies={'Python, Sci-kit learn, Emotiv API, Cykit, OpenViBE'} description={'Undergraduate thesis repository of my career ICI studied at the UAA about applying classification algorithms for movement intention comparing Support Vector Machine, Random Forest and Naive Bayes models.'} url={'https://github.com/Joul24py/UAA-ICI-Thesis'}/>
+      <Project name={'UAA ICI: Programming Exercises'} image={UAAICI} technologies={'C, C++, C#, Java, Python, R, HTML, CSS, JavaScript, PHP, MySQL, ASM, PROLOG, Lisp, Kotlin'} description={'Programming exercises done while studying my undergraduate: Intelligent Computing Engineer at the Aguascalientes Autonomous University'} url={'https://github.com/Joul24py/UAA-ICI'}/>
+      <Project name={'Kaggle: CommonLit competition'} image={KaggleCommonlit} technologies={'Python, Jupyter Notebook, Sci-kit learn'} description={'Personal approach of the Kaggle competition proposed by CommonLit to assess automatically summaries written by students in grades 3-12.'} url={'https://github.com/Joul24py/Kaggle-CommonLit'}/>
+      <Project name={'Daily Coding Problem'} image={DailyCodingProblem} technologies={'Python'} description={'Personal solutions of the daily problems that the Daily Coding Problem website recommends.'} url={'https://github.com/Joul24py/DailyCodingProblem'}/>
+      <Project name={'Brackley Headquarters'} image={BrackleyHQ} technologies={'C++'} description={'C++ project for memory and process management putting into practice buddy system and round robin algorithms.'} url={'https://github.com/Joul24py/Brackley-HQ'}/>
+      <Project name={'The First CRUD'} image={TheFirstCRUD} technologies={'HTML, CSS, JavaScript, Electron.js'} description={'Vanilla frontend project to store users in the local PC storage compiling the web app into desktop app using Electron.js.'} url={'https://github.com/Joul24py/The-First-CRUD'} />
     </div>
 
     <TitleSection title = 'Learning Projects' />
+    <div className='LearningProjects'>
+      <Project name={'12 Data Science Projects'} image={TwelveDSProjects} technologies={'Python, Sci-kit learn, Streamlit'} description={'Twelve projects proposed by The Data Professor in freeCodeCamp to learn data science using Python and streamlit.'} url={'https://github.com/Joul24py/FCC-12Projects-DS'}/>
+      <Project name={'Kaggle: Titanic Machine Learning'} image={KaggleTitanicML} technologies={'Python, Sci-kit learn'} description={'Kaggle proposed project to apply machine learning and predict if certaing participants would survive to the Titanic disaster.'} url={'https://github.com/Joul24py/Kaggle-TitanicML'}/>
+      <Project name={'Vue.js To-do App'} image={VuejsTodoApp} technologies={'HTML, CSS, Vue.js'} description={'Web app project where it is developed a to-do application with Vue.js.'} url={'https://github.com/Joul24py/TodoApp-Vuejs'}/>
+      <Project name={'Tkinter projects'} image={TkinterProjects} technologies={'Python, Tkinter'} description={'Projects proposed by the YouTube channel: Code First With Hala in order to learn to build graphical interfaces in Python using Tkinter.'} url={'https://github.com/Joul24py/CFWH-TkinterProjects'}/>
+      <Project name={'Three.js tutorial'} image={ThreejsTutorial} technologies={'HTML, CSS, JavaScript, Three.js'} description={'Project following a video tutorial about learning to use the three.js library.'} url={'https://github.com/Joul24py/Threejs-Tutorial'}/>
+      <Project name={'AppCitas-Front'} image={AppCitasFront} technologies={'HTML, CSS, Angular, TypeScript'} description={'Dating web app project to learn frontend professional software development.'} url={'https://github.com/Joul24py/AppCitas-Front'}/>
+      <Project name={'AppCitas-Back'} image={AppCitasBack} technologies={'C#, .NET, SQLite'} description={'Dating web app project to learn backend professional software development.'} url={'https://github.com/Joul24py/AppCitas'}/>
+    </div>
+
     <TitleSection title = 'Projects to get to know me better' />
+    <div className='ProjectsGetToKnowMe'>
+      <Project name={'My Way'} image={MiCamino} technologies={'HTML, CSS, JavaScript'} description={'My academic portfolio where I store all of my notes that I did during classes that I took since high school until university (spanish only).'} url={'https://joul24py.github.io/'}/>
+    </div>
+
     <TitleSection title = 'Pseudo-Resume' />
     <TitleSection title = 'Recommended resources' />
+    <div className='RecommendedResources'>
+      <Project name={''} image={''} technologies={''} description={''} url={''}/>
+    </div>
   </React.StrictMode>
 );
 
