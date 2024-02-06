@@ -86,7 +86,6 @@ root.render(
       <Project name={'My Way'} image={MiCamino} technologies={'HTML, CSS, JavaScript'} description={'My academic portfolio where I store all of my notes that I did during classes that I took since high school until university (spanish only).'} url={'https://joul24py.github.io/'}/>
     </div>
 
-    <TitleSection title = 'Pseudo-Resume' />
     <TitleSection title = 'Recommended resources' />
     <div className='RecommendedResources'>
       <Project name={'Learn Git Branching'} image={LearnGitBranching} technologies={''} description={'Website to practice and visually see what Git commands were doing. From the simplest commands to the most complex ones.'} url={'https://learngitbranching.js.org/?locale=en'}/>
