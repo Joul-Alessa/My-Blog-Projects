@@ -4,6 +4,11 @@ a
   margin: 10px 0;
 }
 
+a:link
+{
+  color: #000000;
+}
+
 a:active
 {
   color: #000000;

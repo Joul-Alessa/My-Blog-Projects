@@ -34,6 +34,15 @@ import TkinterProjects from './assets/images/06-learning-projects/tkinter-projec
 
 import MiCamino from './assets/images/07-get-to-know-me-better/mi-camino.png'
 
+import LearnGitBranching from './assets/images/09-recommended-resources/learn-git-branching.png'
+import ReactGG from './assets/images/09-recommended-resources/react-gg.png'
+import DevDocs from './assets/images/09-recommended-resources/devdocs.png'
+import OnlinePythonTutor from './assets/images/09-recommended-resources/online-python-tutor.png'
+import FreeForDev from './assets/images/09-recommended-resources/free-for-dev.png'
+import UXCollective from './assets/images/09-recommended-resources/ux-collective.png'
+import OpenSourceAlternativeTo from './assets/images/09-recommended-resources/open-source-alternative-to.png'
+import FullStackCafe from './assets/images/09-recommended-resources/full-stack-cafe.png'
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
@@ -80,7 +89,14 @@ root.render(
     <TitleSection title = 'Pseudo-Resume' />
     <TitleSection title = 'Recommended resources' />
     <div className='RecommendedResources'>
-      <Project name={''} image={''} technologies={''} description={''} url={''}/>
+      <Project name={'Learn Git Branching'} image={LearnGitBranching} technologies={''} description={'Website to practice and visually see what Git commands were doing. From the simplest commands to the most complex ones.'} url={'https://learngitbranching.js.org/?locale=en'}/>
+      <Project name={'React GG'} image={ReactGG} technologies={''} description={'Website to learn the React library in a very didactic way.'} url={'https://react.gg/'}/>
+      <Project name={'DevDocs'} image={DevDocs} technologies={''} description={'Website that stores a lot of documentation from different programming languages.'} url={'https://devdocs.io/'}/>
+      <Project name={'Online Python Tutor'} image={OnlinePythonTutor} technologies={''} description={'Visual compiler and debugger for various programming languages that allows to visually see what is being proposed in the code.'} url={'https://pythontutor.com/'}/>
+      <Project name={'Free for Developers'} image={FreeForDev} technologies={''} description={'Website that compiles a wide collection of free resources for developers of various types: APIs, data, CI/CD, authentication, security, remote desktop tools, email tools, among many others.'} url={'https://free-for.dev/#/'}/>
+      <Project name={'UX Collective'} image={UXCollective} technologies={''} description={'Collection of articles and examples about the best UX practices.'} url={'https://uxdesign.cc/'}/>
+      <Project name={'Open Source Alternative To'} image={OpenSourceAlternativeTo} technologies={''} description={'Collection of open-source tools for performing different processes.'} url={'https://www.opensourcealternative.to/'}/>
+      <Project name={'Full Stack Cafe'} image={FullStackCafe} technologies={''} description={'Website for practicing interview questions and job application assessments.'} url={'https://www.fullstack.cafe/'}/>
     </div>
   </React.StrictMode>
 );
