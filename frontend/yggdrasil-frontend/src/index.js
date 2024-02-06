@@ -6,6 +6,7 @@ import TitleSection from './components/TitleSection';
 import Job from './components/Job';
 import Study from './components/Study';
 import TechnologyChapter from './components/Technology-Chapter';
+import Project from './components/Project';
 import reportWebVitals from './reportWebVitals';
 
 import HermesCorp from './assets/images/02-professional-experience/hermescorp.jpg'
@@ -33,6 +34,13 @@ root.render(
     <TechnologyChapter />
 
     <TitleSection title = 'My Projects' />
+    <div className='MyProjects'>
+      <Project name={'The First CRUD'} image={Freelancer} technologies={'HTML, CSS, JavaScript'} description={'Project to start learning frontend vanilla'} />
+      <Project name={''} image={''} technologies={''} description={''} />
+      <Project name={''} image={''} technologies={''} description={''} />
+      <Project name={''} image={''} technologies={''} description={''} />
+    </div>
+
     <TitleSection title = 'Learning Projects' />
     <TitleSection title = 'Projects to get to know me better' />
     <TitleSection title = 'Pseudo-Resume' />

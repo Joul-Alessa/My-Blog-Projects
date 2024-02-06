@@ -4,3 +4,10 @@ body
   background-image: url('./assets/images/background.jpg');
   background-position: center;
 }
+
+.MyProjects
+{
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
