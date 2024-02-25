@@ -1,12 +1,12 @@
 import './Videogame.css'
 
-function Videogame({picture, name})
+function Videogame({data})
 {
     return (
         <div className="Videogame">
             <a href='#'>
-                <img src={require("../assets/images/" + picture)} className="Videogame-Picture" alt={name + " illustration"} />
-                <p>{name}</p>
+                <img src={"http://localhost:1337" + data.attributes.logo.data.attributes.url} className="Videogame-Picture" alt={data.attributes.name + " illustration"} />
+                <p>{data.attributes.name}</p>
             </a>
         </div>
     );

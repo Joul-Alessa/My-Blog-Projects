@@ -4,7 +4,8 @@
   "info": {
     "singularName": "videogame",
     "pluralName": "videogames",
-    "displayName": "Videogame"
+    "displayName": "Videogame",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -39,6 +40,28 @@
       "relation": "oneToMany",
       "target": "api::videogame-serie.videogame-serie",
       "mappedBy": "videogame"
+    },
+    "sort_order": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "type": "integer",
+      "required": true
+    },
+    "logo": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ],
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      }
     }
   }
 }

@@ -368,6 +368,7 @@ export interface ApiVideogameVideogame extends Schema.CollectionType {
     singularName: 'videogame';
     pluralName: 'videogames';
     displayName: 'Videogame';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -398,6 +399,20 @@ export interface ApiVideogameVideogame extends Schema.CollectionType {
       'oneToMany',
       'api::videogame-serie.videogame-serie'
     >;
+    sort_order: Attribute.Integer &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    logo: Attribute.Media &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
