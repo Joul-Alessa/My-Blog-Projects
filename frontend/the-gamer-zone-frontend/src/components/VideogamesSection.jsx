@@ -30,8 +30,3 @@ function VideogamesSection()
 }
 
 export default VideogamesSection;
-
-/*
-<Videogame picture = "_5fb56a33-a4b6-480b-83cf-3ae4612366ff.jpeg" name = "Minecraft" />
-<Videogame picture = "_06b13383-1a87-4c22-9746-6db5710c3515.jpeg" name = "Rocket League" />
-*/

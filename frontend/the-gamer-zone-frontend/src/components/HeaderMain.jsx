@@ -5,11 +5,11 @@ function HeaderMain()
 {
   return (
     <header className="HeaderMain">
-        <a href="https://joulessa.tech/">
-            <img src={personalPicture} className="HeaderMain-Personal" alt="Return to Yggdrasil" />
+      <a href="https://joulessa.tech/">
+        <img src={personalPicture} className="HeaderMain-Personal" alt="Return to Yggdrasil" />
 
-            <p>Joul ESSA</p>
-        </a>
+        <p>Joul ESSA</p>
+      </a>
     </header>
   );
 }
