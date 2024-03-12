@@ -1,24 +1,44 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { createBrowserRouter, RouterProvider, Route, Link } from "react-router-dom";
 import './index.css';
 import HeaderMain from './components/HeaderMain';
 import Introduction from './components/Introduction';
 import Presentation from './components/Presentation';
 import VideogamesSection from './components/VideogamesSection';
+import VideogamesDescription from './components/VideogamesDescription';
 import reportWebVitals from './reportWebVitals';
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: (
+      <div>
+        <HeaderMain />
+        <Introduction />
+        <Presentation />
+
+        <VideogamesSection />
+      </div>
+    ),
+  },
+  {
+    path: "/:slug",
+    element: (
+      <div>
+        <HeaderMain />
+        <VideogamesDescription />
+      </div>
+    ),
+  },
+]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    <HeaderMain />
-    <Introduction />
-    <Presentation />
-
-    <VideogamesSection />
-  </React.StrictMode>
+  <RouterProvider router={router} />
 );
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals   <Videogame picture = "_44785daa-d6ed-49c1-bbd4-ffdf533f221b.jpeg" name = "Mecapumble" />
+// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
