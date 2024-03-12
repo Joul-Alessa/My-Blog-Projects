@@ -819,6 +819,12 @@ export interface ApiVideogameVideogame extends Schema.CollectionType {
           localized: false;
         };
       }>;
+    slug: Attribute.UID<'api::videogame.videogame', 'name'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -880,6 +886,12 @@ export interface ApiVideogameSerieVideogameSerie extends Schema.CollectionType {
       'manyToOne',
       'api::videogame.videogame'
     >;
+    slug: Attribute.UID<'api::videogame-serie.videogame-serie', 'name'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

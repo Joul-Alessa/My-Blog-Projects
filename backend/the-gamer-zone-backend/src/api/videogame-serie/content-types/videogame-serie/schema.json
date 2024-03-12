@@ -40,6 +40,15 @@
       "relation": "manyToOne",
       "target": "api::videogame.videogame",
       "inversedBy": "videogame_series"
+    },
+    "slug": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "uid",
+      "targetField": "name"
     }
   }
 }
