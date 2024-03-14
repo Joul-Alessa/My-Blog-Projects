@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider, Route, Link } from "react-router-dom";
 import './index.css';
 import HeaderMain from './components/HeaderMain';
+import HeaderReturnToMain from './components/HeaderReturnToMain';
 import Introduction from './components/Introduction';
 import Presentation from './components/Presentation';
 import VideogamesSection from './components/VideogamesSection';
@@ -27,6 +28,7 @@ const router = createBrowserRouter([
     element: (
       <div>
         <HeaderMain />
+        <HeaderReturnToMain />
         <VideogamesDescription />
       </div>
     ),
