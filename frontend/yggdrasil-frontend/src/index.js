@@ -48,7 +48,7 @@ root.render(
   <React.StrictMode>
     <Introduction />
     <TitleSection title = 'Professional Experience' />
-    <Job image={Freelancer} title={'Independent software developer'} period={'Aug 2023 - Feb 2024'} role={'Full Stack Developer & Machine Learning Engineer'} description={'Software developer for diverse clients in web, desktop, and mobile environments.<br />Analyst and data scientist for client projects employing Machine Learning techniques.'}/>
+    <Job image={Freelancer} title={'Independent software developer'} period={'Aug 2023 - Mar 2024'} role={'Full Stack Developer & Machine Learning Engineer'} description={'Software developer for diverse clients in web, desktop, and mobile environments.<br />Analyst and data scientist for client projects employing Machine Learning techniques.'}/>
     <Job image={HermesCorp} title={'HermesCorp'} period={'Feb 2022 - Apr 2023'} role={'BackEnd Developer'} description={'Development of REST API backend applications with Node.js, storing data in MongoDB and PostgreSQL, and deploying them on AWS Linux servers using Docker.'}/>
 
     <TitleSection title = 'Studies' />
