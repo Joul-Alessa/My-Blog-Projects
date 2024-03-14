@@ -48,14 +48,14 @@ root.render(
   <React.StrictMode>
     <Introduction />
     <TitleSection title = 'Professional Experience' />
-    <Job image={Freelancer} title={'Independent software developer'} period={'Aug 2023 - Feb 2024'} role={'Full Stack Developer & Machine Learning Engineer'} description={'Software developer for diverse clients in web, desktop, and mobile environments.<br />Analyst and data scientist for client projects employing Machine Learning techniques.'}/>
+    <Job image={Freelancer} title={'Independent software developer'} period={'Aug 2023 - Mar 2024'} role={'Full Stack Developer & Machine Learning Engineer'} description={'Software developer for diverse clients in web, desktop, and mobile environments.<br />Analyst and data scientist for client projects employing Machine Learning techniques.'}/>
     <Job image={HermesCorp} title={'HermesCorp'} period={'Feb 2022 - Apr 2023'} role={'BackEnd Developer'} description={'Development of REST API backend applications with Node.js, storing data in MongoDB and PostgreSQL, and deploying them on AWS Linux servers using Docker.'}/>
 
     <TitleSection title = 'Studies' />
     <Study image={Coursera} institution={'Coursera'} period={'Jul 2023 - Sep 2023'} study={'Google Data Analytics Certificate'} description={'Final project centered on analyze the correlation between three-point shot efficiency and percentage of victories in the NBA using Python and Matplotlib.'}/>
     <Study image={UAA} institution={'Aguascalientes Autonomous University'} period={'Jul 2018 - Jun 2023'} study={'Intelligent Computing Engineer'} description={"Undergraduate thesis on the implementation of supervised learning algorithms to classify neuronal activity in movement intention through a brain-computer interface.<br />Five-time awardee of honorable mention in ACM/ICPC participations in 2018, 2019, and 2023.<br />Six-time best grade of a semester (1st, 2nd, 3rd, 4th, 5th and 10th).<br />Class of 2023's best grade with a performance of 9.667 (3.87 GPA equivalent).<br />Graduated with honors after publishing my undergraduate thesis in the CONTIE 2023 journal."}/>
     <Study image={BI} institution={'International Baccalaureate'} period={'Aug 2016 - May 2018'} study={'International Baccalaureate Diploma Programme'} description={'Graduated from the Diploma Programme in the May 2018 examination session with 28 points:<br />Spanish A: Literature (HL): 5.<br />English B (HL): 5.<br />History of America (Spanish) (HL): 4.<br />Biology (Spanish) (SL): 4.<br />Chemistry (Spanish) (SL): 3.<br />Mathematics (Spanish) (SL): 5.<br />Extended Essay in World Studies (Spanish): B.<br />Theory of Knowledge: B.'}/>
-    <Study image={BachUAA} institution={'High School Center of the Aguascalientes Autonomous University'} period={'Jul 2015 - Jun 2018'} study={'General High School Studies'} description={'Grade performance of 9.5 (3.84 GPA equivalent).<br />Fifth place and awardee of honorable mention in final phase of the 2017 Mathematics Mexican Olimpiad, region Aguascalientes.'}/>
+    <Study image={BachUAA} institution={'High School Center of the Aguascalientes Autonomous University'} period={'Jul 2015 - Jun 2018'} study={'General High School Studies'} description={'Grade performance of 9.5 (3.84 GPA equivalent).<br />Fifth place and awardee of honorable mention in final phase of the 2017 Mathematics Mexican Olympiad, region Aguascalientes.'}/>
 
     <TitleSection title = 'Technologies' />
     <TechnologyChapter />
@@ -83,7 +83,7 @@ root.render(
 
     <TitleSection title = 'Projects to get to know me better' />
     <div className='ProjectsGetToKnowMe'>
-      <Project name={'My Way'} image={MiCamino} technologies={'HTML, CSS, JavaScript'} description={'My academic portfolio where I store all of my notes that I did during classes that I took since high school until university (spanish only).'} url={'https://joul24py.github.io/'}/>
+      <Project name={'My Way'} image={MiCamino} technologies={'HTML, CSS, JavaScript'} description={'My academic portfolio where I store all of my notes that I did during classes that I took since high school until university.'} url={'https://joul24py.github.io/'}/>
     </div>
 
     <TitleSection title = 'Recommended resources' />
