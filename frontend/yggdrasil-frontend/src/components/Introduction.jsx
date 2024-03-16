@@ -5,6 +5,7 @@ import LinkedIn from '../assets/images/01-socials/linkedin.png';
 import Kaggle from '../assets/images/01-socials/kaggle.png';
 import GoogleDev from '../assets/images/01-socials/google-dev.png';
 import HFace from '../assets/images/01-socials/hugging-face.png';
+import Orcid from '../assets/images/01-socials/orcid.png';
 
 function Introduction()
 {
@@ -35,6 +36,9 @@ function Introduction()
             </a>
             <a href='https://huggingface.co/Joul24py' target='_blank' rel='noreferrer'>
               <img src={HFace} alt='Hugging Face profile'/>
+            </a>
+            <a href='https://orcid.org/0009-0004-2139-5109' target='_blank' rel='noreferrer'>
+              <img src={Orcid} alt='OrcID profile'/>
             </a>
           </div>
         </div>
