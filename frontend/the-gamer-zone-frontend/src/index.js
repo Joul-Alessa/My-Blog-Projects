@@ -8,6 +8,7 @@ import Introduction from './components/Introduction';
 import Presentation from './components/Presentation';
 import VideogamesSection from './components/VideogamesSection';
 import VideogamesDescription from './components/VideogamesDescription';
+import SeriesDescription from './components/SeriesDescription';
 import reportWebVitals from './reportWebVitals';
 
 const router = createBrowserRouter([
@@ -33,6 +34,14 @@ const router = createBrowserRouter([
       </div>
     ),
   },
+  {
+    path: "/:slugVideogame/:slugSerie",
+    element: (
+      <div>
+        <SeriesDescription />
+      </div>
+    ),
+  }
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
