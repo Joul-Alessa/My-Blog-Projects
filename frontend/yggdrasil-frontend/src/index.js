@@ -83,7 +83,7 @@ root.render(
 
     <TitleSection title = 'Projects to get to know me better' />
     <div className='ProjectsGetToKnowMe'>
-      <Project name={'My Way'} image={MiCamino} technologies={'HTML, CSS, JavaScript'} description={'My academic portfolio where I store all of my notes that I did during classes that I took since high school until university.'} url={'https://joul24py.github.io/'}/>
+      <Project name={'My Way'} image={MiCamino} technologies={'HTML, CSS, JavaScript'} description={'My academic portfolio where I store all of my notes that I did during classes that I took since high school until university.'} url={'https://my-way.joulessa.tech/'}/>
     </div>
 
     <TitleSection title = 'Recommended resources' />
