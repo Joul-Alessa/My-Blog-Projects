@@ -11,6 +11,7 @@ import reportWebVitals from './reportWebVitals';
 
 import HermesCorp from './assets/images/02-professional-experience/hermescorp.jpg'
 import Freelancer from './assets/images/02-professional-experience/freelancer.jpg'
+import Inegi from './assets/images/02-professional-experience/inegi.jpg'
 
 import BachUAA from './assets/images/03-studies/bachuaa.jpg'
 import BI from './assets/images/03-studies/bi.jpg'
@@ -48,6 +49,7 @@ root.render(
   <React.StrictMode>
     <Introduction />
     <TitleSection title = 'Professional Experience' />
+    <Job image={Inegi} title={'INEGI'} period={'Apr 2024 - Present'} role={'Computer Integration Link "B" in Databases'} description={'Administration of databases and maintenance of backend and frontend services for querying information from web services.'}/>
     <Job image={Freelancer} title={'Independent software developer'} period={'Aug 2023 - Mar 2024'} role={'Full Stack Developer & Machine Learning Engineer'} description={'Software developer for diverse clients in web, desktop, and mobile environments.<br />Analyst and data scientist for client projects employing Machine Learning techniques.'}/>
     <Job image={HermesCorp} title={'HermesCorp'} period={'Feb 2022 - Apr 2023'} role={'BackEnd Developer'} description={'Development of REST API backend applications with Node.js, storing data in MongoDB and PostgreSQL, and deploying them on AWS Linux servers using Docker.'}/>
 
