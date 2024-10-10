@@ -24,6 +24,7 @@ import UAAICIThesis from './assets/images/05-my-projects/uaa-ici-thesis.png'
 import BrackleyHQ from './assets/images/05-my-projects/brackley-hq.jpg'
 import DailyCodingProblem from './assets/images/05-my-projects/daily-coding-problem.jpg'
 import UAAICI from './assets/images/05-my-projects/uaa-ici.png'
+import DATA3PMNBA from './assets/images/05-my-projects/data-3pm-nba.jpg'
 
 import AppCitasBack from './assets/images/06-learning-projects/appcitas-back.png'
 import AppCitasFront from './assets/images/06-learning-projects/appcitas-front.png'
@@ -49,7 +50,8 @@ root.render(
   <React.StrictMode>
     <Introduction />
     <TitleSection title = 'Professional Experience' />
-    <Job image={Inegi} title={'INEGI'} period={'Apr 2024 - Present'} role={'Computer Integration Link "B" in Databases'} description={'Administration of databases and maintenance of backend and frontend services for querying information from web services.'}/>
+    <Job image={UAA} title={'Aguascalientes Autonomous University'} period={'Sep 2024 - Present'} role={'Programmer Analyst'} description={'Development, implementation, and maintenance of the academic institution\'s own systems.'}/>
+    <Job image={Inegi} title={'INEGI'} period={'Apr 2024 - Sep 2024'} role={'Computer Integration Link "B" in Databases'} description={'Administration of databases and maintenance of backend and frontend services for querying information from web services.'}/>
     <Job image={Freelancer} title={'Independent software developer'} period={'Aug 2023 - Mar 2024'} role={'Full Stack Developer & Machine Learning Engineer'} description={'Software developer for diverse clients in web, desktop, and mobile environments.<br />Analyst and data scientist for client projects employing Machine Learning techniques.'}/>
     <Job image={HermesCorp} title={'HermesCorp'} period={'Feb 2022 - Apr 2023'} role={'BackEnd Developer'} description={'Development of REST API backend applications with Node.js, storing data in MongoDB and PostgreSQL, and deploying them on AWS Linux servers using Docker.'}/>
 
@@ -66,6 +68,7 @@ root.render(
     <div className='MyProjects'>
       <Project name={'UAA ICI: Thesis'} image={UAAICIThesis} technologies={'Python, Sci-kit learn, Emotiv API, Cykit, OpenViBE'} description={'Undergraduate thesis repository of my career ICI studied at the UAA about applying classification algorithms for movement intention comparing Support Vector Machine, Random Forest and Naive Bayes models.'} url={'https://github.com/Joul24py/UAA-ICI-Thesis'}/>
       <Project name={'UAA ICI: Programming Exercises'} image={UAAICI} technologies={'C, C++, C#, Java, Python, R, HTML, CSS, JavaScript, PHP, MySQL, ASM, PROLOG, Lisp, Kotlin'} description={'Programming exercises done while studying my undergraduate: Intelligent Computing Engineer at the Aguascalientes Autonomous University'} url={'https://github.com/Joul24py/UAA-ICI'}/>
+      <Project name={'Data Analysis: Correlation between three-point shots and victories in the NBA'} image={DATA3PMNBA} technologies={'Python, Jupyter Notebooks, Beautiful Soup, Matplotlib'} description={'Data analysis project focused on answering: Is there a correlation between a higher percentage of three-point shots made and a greater number of victories in the NBA basketball league?'} url={'https://github.com/Joul24py/Data-NBA-3PA'}/>
       <Project name={'Kaggle: CommonLit competition'} image={KaggleCommonlit} technologies={'Python, Jupyter Notebook, Sci-kit learn'} description={'Personal approach of the Kaggle competition proposed by CommonLit to assess automatically summaries written by students in grades 3-12.'} url={'https://github.com/Joul24py/Kaggle-CommonLit'}/>
       <Project name={'Daily Coding Problem'} image={DailyCodingProblem} technologies={'Python'} description={'Personal solutions of the daily problems that the Daily Coding Problem website recommends.'} url={'https://github.com/Joul24py/DailyCodingProblem'}/>
       <Project name={'Brackley Headquarters'} image={BrackleyHQ} technologies={'C++'} description={'C++ project for memory and process management putting into practice buddy system and round robin algorithms.'} url={'https://github.com/Joul24py/Brackley-HQ'}/>
