@@ -1,0 +1,57 @@
+.Introduction
+{
+    margin: 20px 0;
+    padding: 10px 25px;
+    border-color: #f1f1f1;
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 3px;
+    box-shadow: 0px 0px 15px 10px rgba(235, 24, 126, 0.65),
+                inset 0px 0px 15px 10px rgba(235, 24, 126,0.65);
+}
+
+@media only screen and (min-width: 768px)
+{
+    .Introduction
+    {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+    }
+}
+
+@media only screen and (max-width: 767px)
+{
+    .Introduction
+    {
+        display: grid;
+        grid-gap: 10px;
+        align-items: center;
+        justify-content: space-around;
+    }
+
+    .Introduction img
+    {
+        grid-column: 1 / 2;
+        grid-row: 1 / 2;
+        width: 100%;
+    }
+
+    .Introduction-Text
+    {
+        grid-column: 1 / 2;
+        grid-row: 2 / 3;
+    }
+}
+
+.Introduction h1, .Introduction p
+{
+    margin: 40px 0;
+    text-align: center;
+}
+
+.Introduction-Picture
+{
+    width: 24vw;
+    margin: 30px 0;
+}
