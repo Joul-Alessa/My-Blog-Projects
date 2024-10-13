@@ -5,13 +5,13 @@ import { Link } from "react-router-dom";
 function HeaderMain()
 {
   return (
-    <header className="HeaderReturnToMain">
+    <div className="HeaderReturnToMain">
       <Link to={"/"}>
         <img src={mainPicture} className="HeaderReturnToMain-Picture" alt="Return to the main page of The Gamer Zone" />
 
         <p>The Gamer Zone</p>
       </Link>
-    </header>
+    </div>
   );
 }
 

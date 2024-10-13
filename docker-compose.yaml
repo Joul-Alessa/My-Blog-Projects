@@ -1,0 +1,6 @@
+version: '5.2.3'
+services:
+  my-gamer-room-frontend:
+  my-gamer-room-backend:
+    build: ./backend
+  my-gamer-room-database:

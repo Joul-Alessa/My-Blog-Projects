@@ -4,6 +4,7 @@ import { createBrowserRouter, RouterProvider, Route, Link } from "react-router-d
 import './index.css';
 import HeaderMain from './components/HeaderMain';
 import HeaderReturnToMain from './components/HeaderReturnToMain';
+import HeaderReturnToVideogame from './components/HeaderReturnToVideogame';
 import Introduction from './components/Introduction';
 import Presentation from './components/Presentation';
 import VideogamesSection from './components/VideogamesSection';
@@ -38,6 +39,10 @@ const router = createBrowserRouter([
     path: "/:slugVideogame/:slugSerie",
     element: (
       <div>
+        <HeaderMain />
+        <HeaderReturnToMain />
+        <HeaderReturnToVideogame />
+
         <SeriesDescription />
       </div>
     ),

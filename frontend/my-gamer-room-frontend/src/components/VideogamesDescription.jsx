@@ -3,8 +3,6 @@ import './VideogamesDescription.css'
 import { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import React from 'react';
-import {createRoot} from 'react-dom/client';
-import ReactDOM from 'react-dom';
 import ReactMarkdown from 'react-markdown';
 
 function VideogamesDescription()
@@ -15,8 +13,6 @@ function VideogamesDescription()
   const getVideogameContent = () => {
     axios.get("http://localhost:1337/api/videogames?populate=*").then((value) => {
       const contentFound = value.data.data.find(content => content.attributes.slug === slug);
-      console.log("Esto es content found attributes");
-      console.log(contentFound.attributes);
       setVideogameContent(contentFound.attributes);
     });
   };

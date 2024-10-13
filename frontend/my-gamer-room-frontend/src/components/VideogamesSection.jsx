@@ -8,7 +8,6 @@ function VideogamesSection()
   const [videogames, setVideogames] = useState([]);
   const getVideogames = () => {
     axios.get("http://localhost:1337/api/videogames?populate=*").then((value) => {
-      console.log(value.data.data);
       setVideogames(value.data.data);
     });
   };
@@ -20,7 +19,6 @@ function VideogamesSection()
   return (
     <div className='videogames'>
       {videogames.map((item) => {
-        console.log(item.id + "   " + item.attributes.name);
         return (
           <Videogame key={item.id} data={item} />
         );
