@@ -787,7 +787,6 @@ export interface ApiVideogameVideogame extends Schema.CollectionType {
   attributes: {
     name: Attribute.String &
       Attribute.Required &
-      Attribute.Unique &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -805,13 +804,6 @@ export interface ApiVideogameVideogame extends Schema.CollectionType {
       'oneToMany',
       'api::videogame-serie.videogame-serie'
     >;
-    sort_order: Attribute.Integer &
-      Attribute.Required &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: false;
-        };
-      }>;
     logo: Attribute.Media &
       Attribute.Required &
       Attribute.SetPluginOptions<{
@@ -868,7 +860,6 @@ export interface ApiVideogameSerieVideogameSerie extends Schema.CollectionType {
   attributes: {
     name: Attribute.String &
       Attribute.Required &
-      Attribute.Unique &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;

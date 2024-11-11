@@ -24,7 +24,7 @@
       },
       "type": "string",
       "required": true,
-      "unique": true
+      "unique": false
     },
     "description": {
       "pluginOptions": {
@@ -40,15 +40,6 @@
       "relation": "oneToMany",
       "target": "api::videogame-serie.videogame-serie",
       "mappedBy": "videogame"
-    },
-    "sort_order": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": false
-        }
-      },
-      "type": "integer",
-      "required": true
     },
     "logo": {
       "type": "media",
