@@ -362,6 +362,145 @@ export interface AdminTransferTokenPermission extends Schema.CollectionType {
   };
 }
 
+export interface ApiVideogameVideogame extends Schema.CollectionType {
+  collectionName: 'videogames';
+  info: {
+    singularName: 'videogame';
+    pluralName: 'videogames';
+    displayName: 'Videogame';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    name: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    description: Attribute.RichText &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    videogame_series: Attribute.Relation<
+      'api::videogame.videogame',
+      'oneToMany',
+      'api::videogame-serie.videogame-serie'
+    >;
+    logo: Attribute.Media &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    slug: Attribute.UID<'api::videogame.videogame', 'name'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::videogame.videogame',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::videogame.videogame',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::videogame.videogame',
+      'oneToMany',
+      'api::videogame.videogame'
+    >;
+    locale: Attribute.String;
+  };
+}
+
+export interface ApiVideogameSerieVideogameSerie extends Schema.CollectionType {
+  collectionName: 'videogame_series';
+  info: {
+    singularName: 'videogame-serie';
+    pluralName: 'videogame-series';
+    displayName: 'VideogameSerie';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    name: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    description: Attribute.RichText &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    videogame: Attribute.Relation<
+      'api::videogame-serie.videogame-serie',
+      'manyToOne',
+      'api::videogame.videogame'
+    >;
+    slug: Attribute.UID<'api::videogame-serie.videogame-serie', 'name'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::videogame-serie.videogame-serie',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::videogame-serie.videogame-serie',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::videogame-serie.videogame-serie',
+      'oneToMany',
+      'api::videogame-serie.videogame-serie'
+    >;
+    locale: Attribute.String;
+  };
+}
+
 export interface PluginUploadFile extends Schema.CollectionType {
   collectionName: 'files';
   info: {
@@ -768,145 +907,6 @@ export interface PluginI18NLocale extends Schema.CollectionType {
   };
 }
 
-export interface ApiVideogameVideogame extends Schema.CollectionType {
-  collectionName: 'videogames';
-  info: {
-    singularName: 'videogame';
-    pluralName: 'videogames';
-    displayName: 'Videogame';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  pluginOptions: {
-    i18n: {
-      localized: true;
-    };
-  };
-  attributes: {
-    name: Attribute.String &
-      Attribute.Required &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    description: Attribute.RichText &
-      Attribute.Required &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    videogame_series: Attribute.Relation<
-      'api::videogame.videogame',
-      'oneToMany',
-      'api::videogame-serie.videogame-serie'
-    >;
-    logo: Attribute.Media &
-      Attribute.Required &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: false;
-        };
-      }>;
-    slug: Attribute.UID<'api::videogame.videogame', 'name'> &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::videogame.videogame',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::videogame.videogame',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    localizations: Attribute.Relation<
-      'api::videogame.videogame',
-      'oneToMany',
-      'api::videogame.videogame'
-    >;
-    locale: Attribute.String;
-  };
-}
-
-export interface ApiVideogameSerieVideogameSerie extends Schema.CollectionType {
-  collectionName: 'videogame_series';
-  info: {
-    singularName: 'videogame-serie';
-    pluralName: 'videogame-series';
-    displayName: 'VideogameSerie';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  pluginOptions: {
-    i18n: {
-      localized: true;
-    };
-  };
-  attributes: {
-    name: Attribute.String &
-      Attribute.Required &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    description: Attribute.RichText &
-      Attribute.Required &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    videogame: Attribute.Relation<
-      'api::videogame-serie.videogame-serie',
-      'manyToOne',
-      'api::videogame.videogame'
-    >;
-    slug: Attribute.UID<'api::videogame-serie.videogame-serie', 'name'> &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::videogame-serie.videogame-serie',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::videogame-serie.videogame-serie',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    localizations: Attribute.Relation<
-      'api::videogame-serie.videogame-serie',
-      'oneToMany',
-      'api::videogame-serie.videogame-serie'
-    >;
-    locale: Attribute.String;
-  };
-}
-
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -917,6 +917,8 @@ declare module '@strapi/types' {
       'admin::api-token-permission': AdminApiTokenPermission;
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
+      'api::videogame.videogame': ApiVideogameVideogame;
+      'api::videogame-serie.videogame-serie': ApiVideogameSerieVideogameSerie;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::content-releases.release': PluginContentReleasesRelease;
@@ -925,8 +927,6 @@ declare module '@strapi/types' {
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'plugin::i18n.locale': PluginI18NLocale;
-      'api::videogame.videogame': ApiVideogameVideogame;
-      'api::videogame-serie.videogame-serie': ApiVideogameSerieVideogameSerie;
     }
   }
 }
