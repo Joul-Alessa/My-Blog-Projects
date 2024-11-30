@@ -14,8 +14,8 @@ module.exports = createCoreController('api::videogame-serie.videogame-serie', ({
 
         const populate = query.populate 
             ? query.populate === '*'
-              ? true
-              : [query.populate]
+                ? true
+                : [query.populate]
             : [];
 
         const entity = await strapi.db.query('api::videogame-serie.videogame-serie').findOne({
