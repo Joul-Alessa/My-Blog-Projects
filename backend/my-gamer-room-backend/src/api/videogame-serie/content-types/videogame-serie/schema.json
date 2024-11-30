@@ -35,12 +35,6 @@
       "type": "richtext",
       "required": true
     },
-    "videogame": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::videogame.videogame",
-      "inversedBy": "videogame_series"
-    },
     "slug": {
       "pluginOptions": {
         "i18n": {
@@ -49,6 +43,12 @@
       },
       "type": "uid",
       "targetField": "name"
+    },
+    "videogame": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::videogame.videogame",
+      "inversedBy": "videogame_series"
     }
   }
 }
