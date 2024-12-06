@@ -13,11 +13,29 @@ const seedRandom = (seed) => {
 const shuffleWithSeed = (array, seed) => {
     let shuffled = [...array];
     for (let i = shuffled.length - 1; i > 0; i--) {
-      const j = Math.floor(seedRandom(seed + i) * (i + 1));
-      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+        const j = Math.floor(seedRandom(seed + i) * (i + 1));
+        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
     }
     return shuffled;
-  };
+};
+
+function paginate(array, page, pageSize)
+{
+    if(page > Math.ceil(array.length / pageSize))
+    {
+        page = 1; // Aquí puedo decidir si mandar al men al inicio así o al final con Math.ceil(array.length / pageSize)
+    }
+    const result = array.slice((pageSize * (page - 1)), (pageSize * page));
+    return {
+        "data": result,
+        "meta": {
+            "page": page,
+            "pageSize": pageSize,
+            "totalPages": Math.ceil(array.length / pageSize)
+        }
+
+    };
+}
 
 const { createCoreController } = require('@strapi/strapi').factories;
 
@@ -33,19 +51,27 @@ module.exports = createCoreController('api::videogame.videogame', ({strapi}) => 
                 return { [key]: order || 'asc' };
             })
             : undefined;
-
+        
         const videogames = await strapi.entityService.findMany('api::videogame.videogame', {
             ...query,
             populate: { videogames_series: true },
             orderBy: sort
         });
 
+        // Manejo personalizado de parámetro para realizar paginación
+        var page = query.page != undefined
+            ? query.page
+            : "1";
+        var pageSize = query.pageSize != undefined
+            ? query.pageSize
+            : videogames.length;
+
         if(query.randomSeed != undefined)
         {
             const shuffled = shuffleWithSeed(videogames, seed);
-            return shuffled;
+            return paginate(shuffled, page, pageSize);
         }
-        return videogames;
+        return paginate(videogames, page, pageSize);
     },
     async findOne(ctx) {
         const { slug } = ctx.params;
