@@ -52,11 +52,18 @@ module.exports = createCoreController('api::videogame.videogame', ({strapi}) => 
             })
             : undefined;
         
-        const videogames = await strapi.entityService.findMany('api::videogame.videogame', {
+        var videogames = await strapi.entityService.findMany('api::videogame.videogame', {
             ...query,
             populate: { videogames_series: true },
             orderBy: sort
         });
+
+        // Manejo personalizado de parámetro exclude para no regresar una entrada específica
+        var exclude = query.exclude;
+        if(exclude != undefined)
+        {
+            videogames = videogames.filter(object => object.slug !== exclude);
+        }
 
         // Manejo personalizado de parámetro para realizar paginación
         var page = query.page != undefined
