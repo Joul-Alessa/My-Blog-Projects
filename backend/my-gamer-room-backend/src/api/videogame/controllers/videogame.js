@@ -85,24 +85,78 @@ module.exports = createCoreController('api::videogame.videogame', ({strapi}) => 
 
         const { query } = ctx;
 
-        const populate = query.populate 
+        const populate = query.populate
             ? query.populate === '*'
                 ? true
                 : [query.populate]
             : [];
 
-        const entity = await strapi.db.query('api::videogame.videogame').findOne({
-            where: { slug },
-            populate
-        });
-        
-        console.log({
+        var entity = await strapi.db.query('api::videogame.videogame').findOne({
             where: { slug },
             populate
         });
 
         if (!entity) {
             return ctx.notFound('Videogame not found');
+        }
+
+        // Validación cuando se popula para traer las series (sólo entonces se hace lógica de paginación, shuffle y exclude para series)
+        if(populate == true || populate.length > 0)
+        {
+            // Manejo personalizado de parámetro serieSort para realizar orden
+            const serieSort = query.serieSort; // Opciones: asc, desc o números para la random seed. Si no se envía ninguno por defecto: asc
+            var series = entity.videogame_series;
+            if(serieSort == undefined || serieSort === 'asc' || (serieSort != 'desc' && isNaN(serieSort)))
+            {
+                series = series.sort((a, b) => {
+                    if(a.name < b.name)
+                    {
+                        return -1;
+                    }
+                    if(a.name > b.name)
+                    {
+                        return 1;
+                    }
+                    return 0
+                });
+            }
+
+            if(serieSort === 'desc')
+            {
+                series = series.sort((a, b) => {
+                    if(a.name > b.name)
+                    {
+                        return -1;
+                    }
+                    if(a.name < b.name)
+                    {
+                        return 1;
+                    }
+                    return 0
+                });
+            }
+
+            if(!isNaN(serieSort))
+            {
+                series = shuffleWithSeed(series, serieSort);
+            }
+
+            // Manejo personalizado de parámetro serieExclude para excluir un campo
+            var serieExclude = query.serieExclude;
+            if(serieExclude != undefined)
+            {
+                series = series.filter(object => object.slug !== serieExclude);
+            }
+
+            // Manejo personalizado de parámetro seriePage y seriePageSize para realizar paginación
+            var seriePage = query.seriePage != undefined
+                ? query.seriePage
+                : "1";
+            var seriePageSize = query.seriePageSize != undefined
+                ? query.seriePageSize
+                : series.length;
+            
+            entity.videogame_series = paginate(series, seriePage, seriePageSize);
         }
 
         return entity;
