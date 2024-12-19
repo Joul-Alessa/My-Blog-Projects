@@ -5,9 +5,9 @@ function Videogame({data})
 {
   return (
     <div className="Videogame">
-      <Link to={"/" + data.attributes.slug}>
-        <img src={"http://localhost:1337" + data.attributes.logo.data.attributes.url} className="Videogame-Picture" alt={data.attributes.name + " illustration"} />
-        <p>{data.attributes.name}</p>
+      <Link to={"/" + data.slug}>
+        <img src={"http://localhost:1337" + data.logo.url} className="Videogame-Picture" alt={data.name + " illustration"} />
+        <p>{data.name}</p>
       </Link>
     </div>
   );

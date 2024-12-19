@@ -20,7 +20,7 @@ function VideogamesSection()
     <div className='videogames'>
       {videogames.map((item) => {
         return (
-          <Videogame key={item.id} data={item} />
+          <Videogame key={item.slug} data={item} />
         );
       })}
     </div>

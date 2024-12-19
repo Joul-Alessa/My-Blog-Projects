@@ -42,6 +42,13 @@ const { createCoreController } = require('@strapi/strapi').factories;
 module.exports = createCoreController('api::videogame.videogame', ({strapi}) => ({
     async find(ctx) {
         const { query } = ctx;
+
+        const populate = query.populate 
+            ? query.populate === '*'
+                ? query.populate
+                : [query.populate]
+            : [];
+
         const seed = parseInt(query.randomSeed || "0", 10);
 
         // Manejo de parámetro sort ya soportado
@@ -51,10 +58,14 @@ module.exports = createCoreController('api::videogame.videogame', ({strapi}) => 
                 return { [key]: order || 'asc' };
             })
             : undefined;
+
+        console.log({
+            populate,
+            orderBy: sort
+        });
         
         var videogames = await strapi.entityService.findMany('api::videogame.videogame', {
-            ...query,
-            populate: { videogames_series: true },
+            populate,
             orderBy: sort
         });
 

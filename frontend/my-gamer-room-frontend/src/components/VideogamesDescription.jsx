@@ -12,7 +12,9 @@ function VideogamesDescription()
   const [videogameContent, setVideogameContent] = useState([]);
   const getVideogameContent = () => {
     axios.get("http://localhost:1337/api/videogames?populate=*").then((value) => {
-      const contentFound = value.data.data.find(content => content.attributes.slug === slug);
+      console.log("wenas");
+      console.log(value);
+      const contentFound = value.data.data.find(content => content.slug === slug);
       setVideogameContent(contentFound.attributes);
     });
   };
@@ -38,8 +40,8 @@ function VideogamesDescription()
       <div className="Series">
         {videogameContent.videogame_series && videogameContent.videogame_series.data.map((element, index) => (
           <div className='Serie'>
-            <Link to={"/" + videogameContent.slug + "/" + element.attributes.slug}>
-              <p key={index}>{element.attributes.name}</p>
+            <Link to={"/" + videogameContent.slug + "/" + element.slug}>
+              <p key={index}>{element.name}</p>
             </Link>
           </div>
         ))}
