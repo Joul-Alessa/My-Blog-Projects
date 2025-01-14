@@ -58,14 +58,15 @@ module.exports = createCoreController('api::videogame.videogame', ({strapi}) => 
                 return { [key]: order || 'asc' };
             })
             : undefined;
-
-        console.log({
-            populate,
-            orderBy: sort
-        });
         
+        // Manejo de parámetro locale ya soportado
+        const locale = query.locale === "es"
+            ? "es-419"
+            : "en";
+
         var videogames = await strapi.entityService.findMany('api::videogame.videogame', {
             populate,
+            locale,
             orderBy: sort
         });
 
