@@ -11,8 +11,7 @@ function VideogamesSection()
   const [videogames, setVideogames] = useState([]);
   const backendUrl = process.env.REACT_APP_BACKEND_URL;
   const getVideogames = () => {
-    axios.get(backendUrl + "/api/videogames?sort=name&locale=" + i18n.language).then((value) => {
-      console.log(value);
+    axios.get(backendUrl + "/api/videogames?populate=*&sort=name:asc&locale=" + i18n.language).then((value) => {
       setVideogames(value.data.data);
     });
   };
