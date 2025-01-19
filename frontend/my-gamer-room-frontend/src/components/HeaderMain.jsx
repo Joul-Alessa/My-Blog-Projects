@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import personalPicture from '../assets/images/FotoPerfil.jpg'
 import './HeaderMain.css';
@@ -10,6 +11,15 @@ function HeaderMain()
     const selectedLanguage = event.target.value;
     i18n.changeLanguage(selectedLanguage);
   };
+
+  useEffect(() => {
+    const language = i18n.language;
+    const selectElement = document.getElementById('LanguageSelect');
+    if (selectElement) {
+      selectElement.value = language;
+    }
+    document.title = i18n.t('PageTitle');
+  }, [i18n.language]);
 
   return (
     <header className="HeaderMain">
