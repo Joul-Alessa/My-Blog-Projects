@@ -24,7 +24,7 @@ function HeaderMain()
   return (
     <header className="HeaderMain">
       <div class="FlexContainer">
-        <div className="ItemReturn">
+        <div className="ItemReturnHeaderMain">
           <a href="https://joulessa.tech/">
             <img src={personalPicture} className="HeaderMain-Personal" alt={t('HeaderMain-ImageAlt')} />
 

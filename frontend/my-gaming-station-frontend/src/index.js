@@ -28,7 +28,6 @@ const router = createBrowserRouter([
     path: "/:slug",
     element: (
       <div>
-        <HeaderMain />
         <HeaderReturnToMain />
         <VideogamesDescription />
       </div>

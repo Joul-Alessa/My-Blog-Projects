@@ -7,5 +7,7 @@
   "LanguageChooser-en": "English",
   "Introduction-Title": "My Gaming Station",
   "Introduction-Subtitle": "The website where I talk about the videogames that I've played and I like",
-  "Introduction-ImageAlt": "Gaming illustration"
+  "Introduction-ImageAlt": "Gaming illustration",
+  "HeaderReturnToMain-ImageAlt": "Return to the main page",
+  "HeaderReturnToMain-Text": "My Gaming Station"
 }

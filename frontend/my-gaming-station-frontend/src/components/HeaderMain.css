@@ -4,7 +4,7 @@
   justify-content: space-between;
 }
 
-.ItemReturn
+.ItemReturnHeaderMain
 {
   display: inline-flex;
   padding: 4px;
@@ -17,19 +17,19 @@
               inset 0px 0px 8px 5px rgba(52,248,71,0.65);
 }
 
-.ItemReturn a
+.ItemReturnHeaderMain a
 {
   display: inline-flex;
   align-items: center;
 }
 
-.ItemReturn img
+.ItemReturnHeaderMain img
 {
   width: 50px;
   margin: 8px 12px;
 }
 
-.ItemReturn a p
+.ItemReturnHeaderMain a p
 {
   margin: 4px 15px;
   text-decoration: none;

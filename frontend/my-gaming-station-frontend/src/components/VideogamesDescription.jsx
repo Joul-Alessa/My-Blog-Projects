@@ -4,18 +4,20 @@ import { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
+import { useTranslation } from 'react-i18next';
 
 function VideogamesDescription()
 {
+  const { t, i18n } = useTranslation();
+  const backendUrl = process.env.REACT_APP_BACKEND_URL;
+  
   let { slug } = useParams();
 
   const [videogameContent, setVideogameContent] = useState([]);
   const getVideogameContent = () => {
-    axios.get("http://localhost:1337/api/videogames?populate=*").then((value) => {
-      console.log("wenas");
-      console.log(value);
-      const contentFound = value.data.data.find(content => content.slug === slug);
-      setVideogameContent(contentFound.attributes);
+    axios.get(backendUrl + "/api/videogames/" + slug + "?populate=*").then((value) => {
+      const contentFound = value.data;
+      setVideogameContent(contentFound);
     });
   };
 
