@@ -6,7 +6,6 @@ import HeaderMain from './components/HeaderMain';
 import HeaderReturnToMain from './components/HeaderReturnToMain';
 import HeaderReturnToVideogame from './components/HeaderReturnToVideogame';
 import Introduction from './components/Introduction';
-import Presentation from './components/Presentation';
 import VideogamesSection from './components/VideogamesSection';
 import VideogamesDescription from './components/VideogamesDescription';
 import SeriesDescription from './components/SeriesDescription';
@@ -20,7 +19,6 @@ const router = createBrowserRouter([
       <div>
         <HeaderMain />
         <Introduction />
-        <Presentation />
 
         <VideogamesSection />
       </div>
