@@ -70,8 +70,6 @@ module.exports = createCoreController('api::videogame.videogame', ({strapi}) => 
             sort: sort
         });
 
-        console.log(videogames);
-
         // Manejo personalizado de parámetro exclude para no regresar una entrada específica
         var exclude = query.exclude;
         if(exclude != undefined)
