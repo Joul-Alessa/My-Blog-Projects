@@ -11,6 +11,7 @@ import VideogamesSection from './components/VideogamesSection';
 import VideogamesDescription from './components/VideogamesDescription';
 import SeriesDescription from './components/SeriesDescription';
 import reportWebVitals from './reportWebVitals';
+import './i18n';
 
 const router = createBrowserRouter([
   {
