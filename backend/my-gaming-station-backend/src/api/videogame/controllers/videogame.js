@@ -63,12 +63,14 @@ module.exports = createCoreController('api::videogame.videogame', ({strapi}) => 
         const locale = query.locale === "es"
             ? "es-419"
             : "en";
-
+        
         var videogames = await strapi.entityService.findMany('api::videogame.videogame', {
             populate,
             locale,
-            orderBy: sort
+            sort: sort
         });
+
+        console.log(videogames);
 
         // Manejo personalizado de parámetro exclude para no regresar una entrada específica
         var exclude = query.exclude;
