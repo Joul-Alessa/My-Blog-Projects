@@ -59,6 +59,9 @@ module.exports = createCoreController('api::videogame.videogame', ({strapi}) => 
             })
             : undefined;
         
+        // Manejo de filters ya soportado para hacer búsquedas de videojuegos
+        const filters = query.title ? { name: { $containsi: query.title } } : {};
+        
         // Manejo de parámetro locale ya soportado
         const locale = query.locale === "es"
             ? "es-419"
@@ -67,6 +70,7 @@ module.exports = createCoreController('api::videogame.videogame', ({strapi}) => 
         var videogames = await strapi.entityService.findMany('api::videogame.videogame', {
             populate,
             locale,
+            filters,
             sort: sort
         });
 
