@@ -88,7 +88,7 @@ module.exports = createCoreController('api::videogame.videogame', ({strapi}) => 
         var pageSize = query.pageSize != undefined
             ? query.pageSize
             : videogames.length;
-
+        
         if(query.randomSeed != undefined)
         {
             const shuffled = shuffleWithSeed(videogames, seed);
@@ -119,9 +119,16 @@ module.exports = createCoreController('api::videogame.videogame', ({strapi}) => 
         // Validación cuando se popula para traer las series (sólo entonces se hace lógica de paginación, shuffle y exclude para series)
         if(populate == true || populate.length > 0)
         {
+            // Manejo personalizado de parámetro serieExclude para excluir un campo
+            var serieExclude = query.serieExclude;
+            var series = entity.videogame_series;
+            if(serieExclude != undefined)
+            {
+                series = series.filter(object => object.slug !== serieExclude);
+            }
+            
             // Manejo personalizado de parámetro serieSort para realizar orden
             const serieSort = query.serieSort; // Opciones: asc, desc o números para la random seed. Si no se envía ninguno por defecto: asc
-            var series = entity.videogame_series;
             if(serieSort == undefined || serieSort === 'asc' || (serieSort != 'desc' && isNaN(serieSort)))
             {
                 series = series.sort((a, b) => {
@@ -155,13 +162,6 @@ module.exports = createCoreController('api::videogame.videogame', ({strapi}) => 
             if(!isNaN(serieSort))
             {
                 series = shuffleWithSeed(series, serieSort);
-            }
-
-            // Manejo personalizado de parámetro serieExclude para excluir un campo
-            var serieExclude = query.serieExclude;
-            if(serieExclude != undefined)
-            {
-                series = series.filter(object => object.slug !== serieExclude);
             }
 
             // Manejo personalizado de parámetro seriePage y seriePageSize para realizar paginación
