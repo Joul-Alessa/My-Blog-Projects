@@ -40,7 +40,7 @@ function VideogamesSection()
 
   useEffect(() => {
     getVideogames();
-  });
+  }, []);
 
   return (
     <div className='videogames'>
