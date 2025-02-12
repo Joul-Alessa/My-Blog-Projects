@@ -6,6 +6,7 @@ import HeaderMain from './components/HeaderMain';
 import HeaderReturnToMain from './components/HeaderReturnToMain';
 import HeaderReturnToVideogame from './components/HeaderReturnToVideogame';
 import Introduction from './components/Introduction';
+import VideogamesFilterSearch from './components/VideogamesFilterSearch';
 import VideogamesSection from './components/VideogamesSection';
 import VideogamesDescription from './components/VideogamesDescription';
 import SeriesDescription from './components/SeriesDescription';
@@ -20,6 +21,7 @@ const router = createBrowserRouter([
         <HeaderMain />
         <Introduction />
 
+        <VideogamesFilterSearch />
         <VideogamesSection />
       </div>
     ),
