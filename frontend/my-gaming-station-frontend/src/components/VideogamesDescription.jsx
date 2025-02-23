@@ -23,7 +23,7 @@ function VideogamesDescription()
 
   useEffect(() => {
     getVideogameContent();
-  });
+  }, []);
 
   return (
     <div>
