@@ -4,8 +4,8 @@
   "version": "1.0.0",
   "description": "A Strapi application",
   "scripts": {
-    "develop": "strapi develop",
-    "start": "strapi start",
+    "develop": "BROWSER=none SHELL=/bin/bash strapi develop",
+    "start": "BROWSER=none SHELL=/bin/bash strapi start",
     "build": "strapi build",
     "strapi": "strapi"
   },
@@ -15,10 +15,14 @@
     "@strapi/plugin-users-permissions": "4.17.1",
     "@strapi/strapi": "4.17.1",
     "better-sqlite3": "8.6.0",
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0",
+    "knex": "3.1.0",
+    "mssql": "11.0.1",
+    "mysql": "2.18.1",
+    "mysql2": "3.13.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
     "react-router-dom": "5.3.4",
-    "strapi-plugin-populate-deep": "^3.0.1",
+    "strapi-plugin-populate-deep": "3.0.1",
     "styled-components": "5.3.3"
   },
   "author": {
