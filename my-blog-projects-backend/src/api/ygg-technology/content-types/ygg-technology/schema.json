@@ -1,0 +1,35 @@
+{
+  "kind": "collectionType",
+  "collectionName": "ygg_technologies",
+  "info": {
+    "singularName": "ygg-technology",
+    "pluralName": "ygg-technologies",
+    "displayName": "YGG-Technology"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "background_color": {
+      "type": "string",
+      "required": true,
+      "regex": "^#([A-Fa-f0-9]{6})$"
+    },
+    "font_color": {
+      "type": "string",
+      "regex": "^#([A-Fa-f0-9]{6})$",
+      "required": true
+    },
+    "ygg_profiles": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::ygg-profile.ygg-profile"
+    }
+  }
+}

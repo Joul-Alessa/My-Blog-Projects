@@ -1,0 +1,35 @@
+{
+  "kind": "collectionType",
+  "collectionName": "ygg_skills",
+  "info": {
+    "singularName": "ygg-skill",
+    "pluralName": "ygg-skills",
+    "displayName": "YGG-Skill"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "unique": true
+    },
+    "ygg_profiles": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::ygg-profile.ygg-profile",
+      "inversedBy": "ygg_skills"
+    }
+  }
+}
