@@ -21,9 +21,9 @@ services:
       DATABASE_NAME: ${DATABASE_NAME}
       DATABASE_USERNAME: ${DATABASE_USER}
       DATABASE_PASSWORD: ${DATABASE_PASSWORD}
-      AZURE_STORAGE_ACCOUNT: "devstoreaccount1"
-      AZURE_STORAGE_KEY: "Eby8vdM02xNOcqFlqUwJPLlmEtlCDx5E+9g7EXAMPLEKEY="
-      AZURE_STORAGE_URL: "http://azurite:10000/devstoreaccount1"
+      AZURE_STORAGE_ACCOUNT: ${AZURE_STORAGE_ACCOUNT}
+      AZURE_STORAGE_KEY: ${AZURE_STORAGE_ACCOUNT_KEY}
+      AZURE_STORAGE_URL: ${AZURE_STORAGE_URL}
     depends_on:
       - my-gaming-station-database
       - my-gaming-station-storage
@@ -40,10 +40,12 @@ services:
       MYSQL_PASSWORD: ${DATABASE_PASSWORD}
   
   my-gaming-station-storage:
-    image: mcr.microsoft.com/azure-storage/azurite
+    image: mcr.microsoft.com/azure-storage/azurite:3.34.0
     container_name: my-gaming-station-storage
     ports:
       - "10000:10000"  # Puerto para Blob Storage
       - "10001:10001"  # Puerto para Queue Storage
       - "10002:10002"  # Puerto para Table Storage
-    command: "azurite --blobHost 0.0.0.0 --queueHost 0.0.0.0 --tableHost 0.0.0.0"
+    environment:
+      AZURE_STORAGE_ACCOUNT_KEY: ${AZURE_STORAGE_ACCOUNT_KEY}
+    command: "azurite --skipApiVersionCheck -d debug.log --blobHost 0.0.0.0 --queueHost 0.0.0.0 --tableHost 0.0.0.0"
