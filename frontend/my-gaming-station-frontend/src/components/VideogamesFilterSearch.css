@@ -1,0 +1,42 @@
+.DivFilterSearch {
+  display: grid;
+  gap: 10px;
+  padding: 10px;
+}
+
+.DivFilter, .DivSearch {
+  padding: 20px;
+  text-align: center;
+}
+
+.DivFilter label, .DivSearch label {
+  margin: 20px;
+}
+
+.DivFilter select
+{
+  background-color: #0C0C0C;
+  color: #f1f1f1;
+  border-style: none;
+}
+
+@media (min-width: 768px) {
+  .DivFilterSearch {
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto;
+      grid-template-areas: "DivFilter DivSearch";
+  }
+}
+
+@media (max-width: 767px) {
+  .DivFilterSearch {
+      grid-template-columns: 1fr;
+      grid-template-rows: auto auto;
+      grid-template-areas: 
+          "DivSearch"
+          "DivFilter";
+  }
+}
+
+.DivFilter { grid-area: DivFilter; }
+.DivSearch { grid-area: DivSearch; }
