@@ -1,0 +1,18 @@
+{
+  "PageTitle": "My Gaming Station",
+  "HeaderMain-ImageAlt": "Return to Yggdrasil",
+  "HeaderMain-Text": "Yggdrasil",
+  "LanguageChooser-Label": "Language:",
+  "LanguageChooser-es": "Spanish",
+  "LanguageChooser-en": "English",
+  "Introduction-Title": "My Gaming Station",
+  "Introduction-Subtitle": "The website where I talk about the videogames that I've played and I like",
+  "Introduction-ImageAlt": "Gaming illustration",
+  "VideogamesFilterSearch-FilterLabel": "Sort by:",
+  "VideogamesFilterSearch-FilterAscendent": "A-Z",
+  "VideogamesFilterSearch-FilterDescendent": "Z-A",
+  "VideogamesFilterSearch-FilterRandom": "Random",
+  "VideogamesFilterSearch-SearchLabel": "Search videogame:",
+  "HeaderReturnToMain-ImageAlt": "Return to the main page",
+  "HeaderReturnToMain-Text": "My Gaming Station"
+}
