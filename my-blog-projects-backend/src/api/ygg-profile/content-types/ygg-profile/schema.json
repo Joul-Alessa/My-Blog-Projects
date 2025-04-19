@@ -28,12 +28,6 @@
     "slug": {
       "type": "uid",
       "required": true
-    },
-    "ygg_skills": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::ygg-skill.ygg-skill",
-      "mappedBy": "ygg_profiles"
     }
   }
 }
