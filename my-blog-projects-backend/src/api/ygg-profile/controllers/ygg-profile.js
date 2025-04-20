@@ -17,20 +17,15 @@ module.exports = createCoreController('api::ygg-profile.ygg-profile', ({ strapi 
       : query.locale;
 
     const entity = await strapi.db.query('api::ygg-profile.ygg-profile').findOne({
+      select: ['name', 'slug', 'locale'],
       where: {
         slug,
-        locale
+        locale,
+        publishedAt: {
+          $notNull: true
+        }
       }
     });
-
-    if(entity != undefined)
-    {
-      delete entity.id;
-      delete entity.documentId;
-      delete entity.createdAt;
-      delete entity.updatedAt;
-      delete entity.publishedAt;
-    }
 
     const sanitizedEntity = await this.sanitizeOutput(entity);
     return this.transformResponse(sanitizedEntity);
