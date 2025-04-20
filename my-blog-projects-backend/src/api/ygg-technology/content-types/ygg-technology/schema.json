@@ -4,7 +4,8 @@
   "info": {
     "singularName": "ygg-technology",
     "pluralName": "ygg-technologies",
-    "displayName": "YGG-Technology"
+    "displayName": "YGG-Technology",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -30,6 +31,9 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::ygg-profile.ygg-profile"
+    },
+    "is_enabled": {
+      "type": "boolean"
     }
   }
 }

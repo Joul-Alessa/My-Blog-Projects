@@ -779,6 +779,7 @@ export interface ApiYggSkillYggSkill extends Struct.CollectionTypeSchema {
 export interface ApiYggStudyYggStudy extends Struct.CollectionTypeSchema {
   collectionName: 'ygg_studies';
   info: {
+    description: '';
     displayName: 'YGG-Study';
     pluralName: 'ygg-studies';
     singularName: 'ygg-study';
@@ -818,6 +819,7 @@ export interface ApiYggStudyYggStudy extends Struct.CollectionTypeSchema {
           localized: true;
         };
       }>;
+    slug: Schema.Attribute.UID & Schema.Attribute.Required;
     study: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.SetPluginOptions<{
@@ -835,6 +837,7 @@ export interface ApiYggTechnologyYggTechnology
   extends Struct.CollectionTypeSchema {
   collectionName: 'ygg_technologies';
   info: {
+    description: '';
     displayName: 'YGG-Technology';
     pluralName: 'ygg-technologies';
     singularName: 'ygg-technology';
@@ -848,6 +851,7 @@ export interface ApiYggTechnologyYggTechnology
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     font_color: Schema.Attribute.String & Schema.Attribute.Required;
+    is_enabled: Schema.Attribute.Boolean;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
