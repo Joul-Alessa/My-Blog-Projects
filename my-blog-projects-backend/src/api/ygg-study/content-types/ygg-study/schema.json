@@ -4,7 +4,8 @@
   "info": {
     "singularName": "ygg-study",
     "pluralName": "ygg-studies",
-    "displayName": "YGG-Study"
+    "displayName": "YGG-Study",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -41,12 +42,12 @@
       }
     },
     "logo": {
-      "allowedTypes": [
-        "images"
-      ],
       "type": "media",
       "multiple": false,
-      "required": true
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
     },
     "description": {
       "type": "richtext",
@@ -58,6 +59,10 @@
     },
     "order": {
       "type": "integer"
+    },
+    "slug": {
+      "type": "uid",
+      "required": true
     }
   }
 }
