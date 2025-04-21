@@ -74,6 +74,9 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::ygg-profile.ygg-profile"
+    },
+    "slug": {
+      "type": "uid"
     }
   }
 }
