@@ -15,17 +15,21 @@ module.exports = createCoreController('api::ygg-profile.ygg-profile', ({ strapi 
     const locale = query.locale === undefined
       ? 'en'
       : query.locale;
-
-    const entity = await strapi.db.query('api::ygg-profile.ygg-profile').findOne({
+    
+    var filters = {
       select: ['name', 'slug', 'locale'],
       where: {
         slug,
-        locale,
-        publishedAt: {
-          $notNull: true
-        }
+        locale
       }
-    });
+    };
+
+    if(query.includeDrafts !== 'true')
+    {
+      filters.where.publishedAt = { $notNull: true };
+    }
+
+    const entity = await strapi.db.query('api::ygg-profile.ygg-profile').findOne(filters);
 
     const sanitizedEntity = await this.sanitizeOutput(entity);
     return this.transformResponse(sanitizedEntity);

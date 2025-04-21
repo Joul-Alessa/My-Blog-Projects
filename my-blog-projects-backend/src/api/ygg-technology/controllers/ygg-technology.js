@@ -15,55 +15,54 @@ module.exports = createCoreController('api::ygg-technology.ygg-technology', ({ s
     const profile = query.profile;
     const isEnabled = query.isEnabled;
 
-    var entity = await strapi.db.query('api::ygg-technology.ygg-technology').findMany({
-      select: ['name', 'background_color', 'font_color', 'is_enabled'],
-      where: {
-        publishedAt: {
-          $notNull: true
-        },
-        ygg_profiles: {
-          slug: {
-            $eq: profile
-          }
-        }
-      },
+    var filters = {
+      select: ['documentId', 'name', 'background_color', 'font_color'],
+      where: {},
       populate: {
         ygg_profiles: {
-          select: ['slug'],
-          where: {
-            slug: {
-              $eq: profile
-            }
-          }
+          select: ['slug']
         }
       },
       orderBy: [{ name: 'asc' }]
-    });
+    };
 
-    if(entity.length == 0){
-      entity = await strapi.db.query('api::ygg-technology.ygg-technology').findMany({
-        select: ['name', 'background_color', 'font_color', 'is_enabled'],
-        where: {
-          publishedAt: {
-            $notNull: true
-          },
-        },
-        populate: {
-          ygg_profiles: {
-            select: ['slug']
-          }
-        },
-        orderBy: [{ name: 'asc' }]
-      });
+    if(profile != undefined)
+    {
+      filters.where.ygg_profiles = {
+        slug: {
+          $eq: profile
+        }
+      };
+      filters.populate.ygg_profiles.where = {
+        slug: {
+          $eq: profile
+        }
+      };
     }
 
-    if(isEnabled === 'true'){
-      entity = entity.filter(element => element.is_enabled === 'true');
+    if(query.publishState == 'draft')
+    {
+      filters.where.publishedAt = { $null: true };
     }
+    if(query.publishState != 'draftNotPublished' && query.publishState != 'draft' && query.publishState != 'all')
+    {
+      filters.where.publishedAt = { $notNull: true };
+    }
+
+    var entity = await strapi.db.query('api::ygg-technology.ygg-technology').findMany(filters);
+
+    var entityIdCounts = entity.reduce((acc, item) => {
+      acc[item.documentId] = (acc[item.documentId] || 0) + 1;
+      return acc;
+    }, {});
+
+    if(query.publishState == 'draftNotPublished')
+    {
+      entity = entity.filter(item => entityIdCounts[item.documentId] === 1);
+    }
+
+    entity.forEach(obj => delete obj.documentId);
 
     return this.transformResponse(entity);
-
-    // const sanitizedEntity = await this.sanitizeOutput(entity);
-    // return this.transformResponse(sanitizedEntity);
   }
 }));
