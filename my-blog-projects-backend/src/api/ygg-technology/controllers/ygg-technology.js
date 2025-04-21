@@ -13,7 +13,6 @@ module.exports = createCoreController('api::ygg-technology.ygg-technology', ({ s
     const { query } = ctx;
 
     const profile = query.profile;
-    const isEnabled = query.isEnabled;
 
     var filters = {
       select: ['documentId', 'name', 'background_color', 'font_color'],

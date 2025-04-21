@@ -12,9 +12,7 @@ module.exports = createCoreController('api::ygg-profile.ygg-profile', ({ strapi 
 
     const { query } = ctx;
 
-    const locale = query.locale === undefined
-      ? 'en'
-      : query.locale;
+    const locale = query.locale === undefined ? 'en' : query.locale;
     
     var filters = {
       select: ['name', 'slug', 'locale'],
