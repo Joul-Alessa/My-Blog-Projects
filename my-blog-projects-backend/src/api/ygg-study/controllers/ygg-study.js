@@ -20,6 +20,11 @@ module.exports = createCoreController('api::ygg-study.ygg-study', ({ strapi }) =
           $notNull: true
         }
       },
+      populate: {
+        logo: {
+          select: ['name', 'alternativeText', 'formats']
+        }
+      },
       orderBy: [{ order: 'desc' }]
     });
 
@@ -42,6 +47,11 @@ module.exports = createCoreController('api::ygg-study.ygg-study', ({ strapi }) =
         locale,
         publishedAt: {
           $notNull: true
+        }
+      },
+      populate: {
+        logo: {
+          select: ['name', 'alternativeText', 'formats']
         }
       }
     });

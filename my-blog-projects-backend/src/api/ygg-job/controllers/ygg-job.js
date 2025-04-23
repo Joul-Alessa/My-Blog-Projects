@@ -30,6 +30,9 @@ module.exports = createCoreController('api::ygg-job.ygg-job', ({ strapi }) => ({
         ygg_profiles: {
           select: ['name', 'slug', 'locale']
         },
+        logo: {
+          select: ['name', 'alternativeText', 'formats']
+        }
       },
       orderBy: [{ order: 'desc' }]
     });
@@ -41,9 +44,7 @@ module.exports = createCoreController('api::ygg-job.ygg-job', ({ strapi }) => ({
 
     const { query } = ctx;
 
-    const locale = query.locale === undefined
-      ? 'en'
-      : query.locale;
+    const locale = query.locale === undefined ? 'en' : query.locale;
 
     const entity = await strapi.db.query('api::ygg-job.ygg-job').findOne({
       select: ['workplace', 'position', 'slug', 'initial_date', 'end_date', 'description', 'order', 'locale'],
@@ -64,6 +65,9 @@ module.exports = createCoreController('api::ygg-job.ygg-job', ({ strapi }) => ({
         ygg_profiles: {
           select: ['name', 'slug', 'locale']
         },
+        logo: {
+          select: ['name', 'alternativeText', 'formats']
+        }
       }
     });
 

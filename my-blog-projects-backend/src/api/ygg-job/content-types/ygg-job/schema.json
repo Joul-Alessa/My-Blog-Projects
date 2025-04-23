@@ -76,7 +76,8 @@
       "target": "api::ygg-profile.ygg-profile"
     },
     "slug": {
-      "type": "uid"
+      "type": "uid",
+      "required": true
     }
   }
 }

@@ -72,7 +72,8 @@
     },
     "know_me_better_project": {
       "type": "boolean",
-      "required": true
+      "required": true,
+      "default": false
     },
     "ygg_profiles": {
       "type": "relation",
@@ -84,6 +85,10 @@
     },
     "url": {
       "type": "string"
+    },
+    "slug": {
+      "type": "uid",
+      "required": true
     }
   }
 }
