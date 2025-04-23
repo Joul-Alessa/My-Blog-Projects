@@ -29,6 +29,7 @@ module.exports = createCoreController('api::ygg-project.ygg-project', ({ strapi 
     const { query } = ctx;
 
     const locale = query.locale === undefined ? 'en' : query.locale;
+    const profile = query.profile;
 
     const projectType = query.projectType;
 
@@ -58,6 +59,20 @@ module.exports = createCoreController('api::ygg-project.ygg-project', ({ strapi 
       offset: query.offset,
       limit: query.limit
     };
+
+    if(profile != undefined)
+      {
+        filters.where.ygg_profiles = {
+          slug: {
+            $eq: profile
+          }
+        };
+        filters.populate.ygg_profiles.where = {
+          slug: {
+            $eq: profile
+          }
+        };
+      }
 
     if(projectType == 'collaboration' || projectType == 'contribution' || projectType == 'product' || projectType == 'learning' || projectType == 'personal')
     {
