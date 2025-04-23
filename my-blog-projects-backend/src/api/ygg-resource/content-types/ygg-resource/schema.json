@@ -4,7 +4,8 @@
   "info": {
     "singularName": "ygg-resource",
     "pluralName": "ygg-resources",
-    "displayName": "YGG-Resource"
+    "displayName": "YGG-Resource",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -36,16 +37,16 @@
       "target": "api::ygg-skill.ygg-skill"
     },
     "logo": {
-      "allowedTypes": [
-        "images"
-      ],
       "type": "media",
       "multiple": false,
-      "required": true
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
     },
     "review": {
       "type": "text",
-      "required": true,
+      "required": false,
       "pluginOptions": {
         "i18n": {
           "localized": true
@@ -71,6 +72,10 @@
     },
     "url": {
       "type": "string"
+    },
+    "slug": {
+      "type": "uid",
+      "required": true
     }
   }
 }

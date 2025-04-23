@@ -4,6 +4,7 @@
  * ygg-project controller
  */
 
+// Función para paginación
 function paginate(array, page, pageSize)
 {
     if(page > Math.ceil(array.length / pageSize))
@@ -55,24 +56,22 @@ module.exports = createCoreController('api::ygg-project.ygg-project', ({ strapi 
           select: ['name', 'alternativeText', 'formats']
         }
       },
-      orderBy: [{ order: 'desc' }],
-      offset: query.offset,
-      limit: query.limit
+      orderBy: [{ order: 'desc' }]
     };
 
     if(profile != undefined)
-      {
-        filters.where.ygg_profiles = {
-          slug: {
-            $eq: profile
-          }
-        };
-        filters.populate.ygg_profiles.where = {
-          slug: {
-            $eq: profile
-          }
-        };
-      }
+    {
+      filters.where.ygg_profiles = {
+        slug: {
+          $eq: profile
+        }
+      };
+      filters.populate.ygg_profiles.where = {
+        slug: {
+          $eq: profile
+        }
+      };
+    }
 
     if(projectType == 'collaboration' || projectType == 'contribution' || projectType == 'product' || projectType == 'learning' || projectType == 'personal')
     {

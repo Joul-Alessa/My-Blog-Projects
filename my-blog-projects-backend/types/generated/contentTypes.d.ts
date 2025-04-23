@@ -670,6 +670,7 @@ export interface ApiYggProjectYggProject extends Struct.CollectionTypeSchema {
 export interface ApiYggResourceYggResource extends Struct.CollectionTypeSchema {
   collectionName: 'ygg_resources';
   info: {
+    description: '';
     displayName: 'YGG-Resource';
     pluralName: 'ygg-resources';
     singularName: 'ygg-resource';
@@ -709,12 +710,12 @@ export interface ApiYggResourceYggResource extends Struct.CollectionTypeSchema {
     order: Schema.Attribute.Integer;
     publishedAt: Schema.Attribute.DateTime;
     review: Schema.Attribute.Text &
-      Schema.Attribute.Required &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
+    slug: Schema.Attribute.UID & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
