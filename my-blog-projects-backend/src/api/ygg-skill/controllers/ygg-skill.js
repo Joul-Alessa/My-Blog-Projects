@@ -8,8 +8,6 @@ const { createCoreController } = require('@strapi/strapi').factories;
 
 module.exports = createCoreController('api::ygg-skill.ygg-skill', ({ strapi }) => ({
   async find(ctx){
-    const { slug } = ctx.params;
-
     const { query } = ctx;
 
     const locale = query.locale === undefined ? 'en' : query.locale;

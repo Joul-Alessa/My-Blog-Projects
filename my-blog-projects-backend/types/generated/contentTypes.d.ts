@@ -484,6 +484,109 @@ export interface ApiMgsVideogameMgsVideogame
   };
 }
 
+export interface ApiYggFalseCvEventYggFalseCvEvent
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'ygg_false_cv_events';
+  info: {
+    description: '';
+    displayName: 'YGG-False-CV-Event';
+    pluralName: 'ygg-false-cv-events';
+    singularName: 'ygg-false-cv-event';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.RichText &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    end_date: Schema.Attribute.Date &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    initial_date: Schema.Attribute.Date & Schema.Attribute.Required;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::ygg-false-cv-event.ygg-false-cv-event'
+    >;
+    name: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    publishedAt: Schema.Attribute.DateTime;
+    slug: Schema.Attribute.UID & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    ygg_false_cv_group: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::ygg-false-cv-group.ygg-false-cv-group'
+    >;
+  };
+}
+
+export interface ApiYggFalseCvGroupYggFalseCvGroup
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'ygg_false_cv_groups';
+  info: {
+    description: '';
+    displayName: 'YGG-False-CV-Group';
+    pluralName: 'ygg-false-cv-groups';
+    singularName: 'ygg-false-cv-group';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    is_formal: Schema.Attribute.Boolean &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<false>;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::ygg-false-cv-group.ygg-false-cv-group'
+    >;
+    name: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiYggJobYggJob extends Struct.CollectionTypeSchema {
   collectionName: 'ygg_jobs';
   info: {
@@ -1386,6 +1489,8 @@ declare module '@strapi/strapi' {
       'admin::user': AdminUser;
       'api::mgs-serie.mgs-serie': ApiMgsSerieMgsSerie;
       'api::mgs-videogame.mgs-videogame': ApiMgsVideogameMgsVideogame;
+      'api::ygg-false-cv-event.ygg-false-cv-event': ApiYggFalseCvEventYggFalseCvEvent;
+      'api::ygg-false-cv-group.ygg-false-cv-group': ApiYggFalseCvGroupYggFalseCvGroup;
       'api::ygg-job.ygg-job': ApiYggJobYggJob;
       'api::ygg-profile.ygg-profile': ApiYggProfileYggProfile;
       'api::ygg-project.ygg-project': ApiYggProjectYggProject;

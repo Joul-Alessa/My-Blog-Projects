@@ -1,0 +1,60 @@
+{
+  "kind": "collectionType",
+  "collectionName": "ygg_false_cv_events",
+  "info": {
+    "singularName": "ygg-false-cv-event",
+    "pluralName": "ygg-false-cv-events",
+    "displayName": "YGG-False-CV-Event",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "unique": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "initial_date": {
+      "type": "date",
+      "required": true
+    },
+    "end_date": {
+      "type": "date",
+      "required": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "description": {
+      "type": "richtext",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "slug": {
+      "type": "uid",
+      "required": true
+    },
+    "ygg_false_cv_group": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::ygg-false-cv-group.ygg-false-cv-group"
+    }
+  }
+}

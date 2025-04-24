@@ -36,9 +36,7 @@ module.exports = createCoreController('api::ygg-study.ygg-study', ({ strapi }) =
 
     const { query } = ctx;
 
-    const locale = query.locale === undefined
-      ? 'en'
-      : query.locale;
+    const locale = query.locale === undefined ? 'en' : query.locale;
 
     const entity = await strapi.db.query('api::ygg-study.ygg-study').findOne({
       select: ['school', 'study', 'slug', 'initial_date', 'end_date', 'description', 'order', 'locale'],
