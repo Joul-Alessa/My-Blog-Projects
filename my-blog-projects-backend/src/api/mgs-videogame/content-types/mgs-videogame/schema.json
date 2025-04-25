@@ -36,14 +36,14 @@
     "logo": {
       "type": "media",
       "multiple": false,
-      "required": false,
+      "required": true,
       "allowedTypes": [
         "images"
       ]
     },
     "slug": {
       "type": "uid",
-      "required": false
+      "required": true
     },
     "release_date": {
       "type": "datetime"

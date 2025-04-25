@@ -456,7 +456,7 @@ export interface ApiMgsVideogameMgsVideogame
       'oneToMany',
       'api::mgs-videogame.mgs-videogame'
     >;
-    logo: Schema.Attribute.Media<'images'>;
+    logo: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
     mgs_series: Schema.Attribute.Relation<
       'oneToMany',
       'api::mgs-serie.mgs-serie'
@@ -473,7 +473,7 @@ export interface ApiMgsVideogameMgsVideogame
     release_date_format: Schema.Attribute.Enumeration<
       ['DD/MM/AAAA', '??/MM/AAAA', '??/??/AAAA']
     >;
-    slug: Schema.Attribute.UID;
+    slug: Schema.Attribute.UID & Schema.Attribute.Required;
     started_playing_date: Schema.Attribute.DateTime;
     started_playing_date_format: Schema.Attribute.Enumeration<
       ['DD/MM/AAAA', '??/MM/AAAA', '??/??/AAAA']

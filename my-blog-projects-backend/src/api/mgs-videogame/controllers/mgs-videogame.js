@@ -4,6 +4,135 @@
  * mgs-videogame controller
  */
 
+// Funciones para mezclado
+const seedRandom = (seed) => {
+  let x = Math.sin(seed++) * 10000;
+  return x - Math.floor(x);
+};
+
+const shuffleWithSeed = (array, seed) => {
+  let shuffled = [...array];
+  for (let i = shuffled.length - 1; i > 0; i--) {
+      const j = Math.floor(seedRandom(seed + i) * (i + 1));
+      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+  return shuffled;
+};
+
+// Función para paginación
+function paginate(array, page, pageSize)
+{
+    if(page > Math.ceil(array.length / pageSize))
+    {
+        page = 1; // Aquí puedo decidir si mandar al men al inicio así o al final con Math.ceil(array.length / pageSize)
+    }
+    const result = array.slice((pageSize * (page - 1)), (pageSize * page));
+    return {
+        "data": result,
+        "meta": {
+            "page": page,
+            "pageSize": pageSize,
+            "totalPages": Math.ceil(array.length / pageSize)
+        }
+
+    };
+}
+
 const { createCoreController } = require('@strapi/strapi').factories;
 
-module.exports = createCoreController('api::mgs-videogame.mgs-videogame');
+module.exports = createCoreController('api::mgs-videogame.mgs-videogame', ({ strapi }) => ({
+  async find(ctx){
+    const { query } = ctx;
+
+    const locale = query.locale === undefined ? 'en' : query.locale;
+    const seed = parseInt(query.randomSeed || "0", 10);
+
+    var filters = {
+      select: ['name', 'description', 'release_date', 'release_date_format', 'started_playing_date', 'started_playing_date_format', 'slug', 'locale'],
+      where: {
+        locale,
+        publishedAt: {
+          $notNull: true
+        }
+      },
+      populate: {
+        mgs_series: {
+          select: ['name', 'description', 'started_playing_date', 'started_playing_date_format', 'slug', 'locale']
+        },
+        logo: {
+          select: ['name', 'alternativeText', 'formats']
+        }
+      }
+    };
+
+    if(query.exclude != undefined)
+    {
+      filters.where.slug = { $notContains: query.exclude };
+    }
+
+    if(query.orderBy == 'name-desc')
+    {
+      filters.orderBy = [{ name: 'desc' }];
+    }
+    if(query.orderBy == 'releaseDate-asc')
+    {
+      filters.orderBy = [{ release_date: 'asc' }];
+    }
+    if(query.orderBy == 'releaseDate-desc')
+    {
+      filters.orderBy = [{ release_date: 'desc' }];
+    }
+    if(query.orderBy == 'startedPlayingDate-asc')
+    {
+      filters.orderBy = [{ started_playing_date: 'asc' }];
+    }
+    if(query.orderBy == 'startedPlayingDate-desc')
+    {
+      filters.orderBy = [{ started_playing_date: 'desc' }];
+    }
+    if(query.orderBy != 'name-desc' && query.orderBy != 'releaseDate-asc' && query.orderBy != 'releaseDate-desc' && query.orderBy != 'startedPlayingDate-asc' && query.orderBy != 'startedPlayingDate-desc')
+    {
+      filters.orderBy = [{ name: 'asc' }];
+    }
+
+    const entity = await strapi.db.query('api::mgs-videogame.mgs-videogame').findMany(filters);
+
+    var page = query.page != undefined ? query.page : "1";
+    var pageSize = query.pageSize != undefined ? query.pageSize : entity.length;
+
+    if(query.randomSeed != undefined)
+    {
+        const shuffled = shuffleWithSeed(entity, seed);
+        return paginate(shuffled, page, pageSize);
+    }
+    return paginate(entity, page, pageSize);
+  },
+  async findBySlug(ctx){
+    const { slug } = ctx.params;
+
+    const { query } = ctx;
+
+    const locale = query.locale === undefined ? 'en' : query.locale;
+
+    const entity = await strapi.db.query('api::mgs-videogame.mgs-videogame').findOne({
+      select: ['name', 'description', 'release_date', 'release_date_format', 'started_playing_date', 'started_playing_date_format', 'slug', 'locale'],
+      where: {
+        slug,
+        locale,
+        publishedAt: {
+          $notNull: true
+        }
+      },
+      populate: {
+        mgs_series: {
+          select: ['name', 'description', 'started_playing_date', 'started_playing_date_format', 'slug', 'locale']
+        },
+        logo: {
+          select: ['name', 'alternativeText', 'formats']
+        }
+      }
+    });
+
+    return this.transformResponse(entity);
+  }
+}));
