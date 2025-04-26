@@ -102,8 +102,8 @@ module.exports = createCoreController('api::mgs-videogame.mgs-videogame', ({ str
 
     if(query.randomSeed != undefined)
     {
-        const shuffled = shuffleWithSeed(entity, seed);
-        return paginate(shuffled, page, pageSize);
+      const shuffled = shuffleWithSeed(entity, seed);
+      return paginate(shuffled, page, pageSize);
     }
     return paginate(entity, page, pageSize);
   },
