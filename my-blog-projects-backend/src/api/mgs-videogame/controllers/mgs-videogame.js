@@ -48,7 +48,7 @@ module.exports = createCoreController('api::mgs-videogame.mgs-videogame', ({ str
     const seed = parseInt(query.randomSeed || "0", 10);
 
     var filters = {
-      select: ['name', 'description', 'release_date', 'release_date_format', 'started_playing_date', 'started_playing_date_format', 'slug', 'locale'],
+      select: ['name', 'description', 'release_date', 'release_date_format', 'started_playing_date', 'started_playing_date_format', 'slug', 'locale', 'createdAt'],
       where: {
         locale,
         publishedAt: {
@@ -90,6 +90,14 @@ module.exports = createCoreController('api::mgs-videogame.mgs-videogame', ({ str
     {
       filters.orderBy = [{ started_playing_date: 'desc' }];
     }
+    if(query.orderBy == 'createdAtDate-asc')
+    {
+      filters.orderBy = [{ createdAt: 'asc' }];
+    }
+    if(query.orderBy == 'createdAtDate-desc')
+    {
+      filters.orderBy = [{ createdAt: 'desc' }];
+    }
     if(query.orderBy != 'name-desc' && query.orderBy != 'releaseDate-asc' && query.orderBy != 'releaseDate-desc' && query.orderBy != 'startedPlayingDate-asc' && query.orderBy != 'startedPlayingDate-desc')
     {
       filters.orderBy = [{ name: 'asc' }];
@@ -115,7 +123,7 @@ module.exports = createCoreController('api::mgs-videogame.mgs-videogame', ({ str
     const locale = query.locale === undefined ? 'en' : query.locale;
 
     const entity = await strapi.db.query('api::mgs-videogame.mgs-videogame').findOne({
-      select: ['name', 'description', 'release_date', 'release_date_format', 'started_playing_date', 'started_playing_date_format', 'slug', 'locale'],
+      select: ['name', 'description', 'release_date', 'release_date_format', 'started_playing_date', 'started_playing_date_format', 'slug', 'locale', 'createdAt'],
       where: {
         slug,
         locale,

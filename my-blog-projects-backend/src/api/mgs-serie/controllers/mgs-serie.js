@@ -49,7 +49,7 @@ module.exports = createCoreController('api::mgs-serie.mgs-serie', ({ strapi }) =
     const seed = parseInt(query.randomSeed || "0", 10);
 
     var filters = {
-      select: ['name', 'description', 'started_playing_date', 'started_playing_date_format', 'slug', 'locale'],
+      select: ['name', 'description', 'started_playing_date', 'started_playing_date_format', 'slug', 'locale', 'createdAt'],
       where: {
         locale,
         publishedAt: {
@@ -82,6 +82,14 @@ module.exports = createCoreController('api::mgs-serie.mgs-serie', ({ strapi }) =
     if(query.orderBy == 'startedPlayingDate-desc')
     {
       filters.orderBy = [{ started_playing_date: 'desc' }];
+    }
+    if(query.orderBy == 'createdAtDate-asc')
+    {
+      filters.orderBy = [{ createdAt: 'asc' }];
+    }
+    if(query.orderBy == 'createdAtDate-desc')
+    {
+      filters.orderBy = [{ createdAt: 'desc' }];
     }
     if(query.orderBy != 'name-desc' && query.orderBy != 'startedPlayingDate-asc' && query.orderBy != 'startedPlayingDate-desc')
     {
@@ -122,7 +130,7 @@ module.exports = createCoreController('api::mgs-serie.mgs-serie', ({ strapi }) =
     const locale = query.locale === undefined ? 'en' : query.locale;
 
     const entity = await strapi.db.query('api::mgs-serie.mgs-serie').findOne({
-      select: ['name', 'description', 'started_playing_date', 'started_playing_date_format', 'slug', 'locale'],
+      select: ['name', 'description', 'started_playing_date', 'started_playing_date_format', 'slug', 'locale', 'createdAt'],
       where: {
         slug,
         locale,
