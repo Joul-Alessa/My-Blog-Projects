@@ -66,6 +66,11 @@ module.exports = createCoreController('api::mgs-serie.mgs-serie', ({ strapi }) =
       }
     };
 
+    if(query.search != undefined)
+    {
+      filters.where.name = { $containsi: query.search };
+    }
+
     if(query.exclude != undefined)
     {
       filters.where.slug = { $notContains: query.exclude };

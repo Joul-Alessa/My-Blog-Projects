@@ -65,6 +65,11 @@ module.exports = createCoreController('api::mgs-videogame.mgs-videogame', ({ str
       }
     };
 
+    if(query.search != undefined)
+    {
+      filters.where.name = { $containsi: query.search };
+    }
+
     if(query.exclude != undefined)
     {
       filters.where.slug = { $notContains: query.exclude };
