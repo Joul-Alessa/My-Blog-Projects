@@ -1,0 +1,78 @@
+{
+  "kind": "collectionType",
+  "collectionName": "mht_movies",
+  "info": {
+    "singularName": "mht-movie",
+    "pluralName": "mht-movies",
+    "displayName": "MHT-Movie",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "logo": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "watching_date": {
+      "type": "datetime",
+      "required": true
+    },
+    "watching_date_format": {
+      "type": "enumeration",
+      "enum": [
+        "DD/MM/AAAA",
+        "??/MM/AAAA",
+        "??/??/AAAA"
+      ]
+    },
+    "grade": {
+      "type": "decimal"
+    },
+    "mht_franchise": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::mht-franchise.mht-franchise",
+      "inversedBy": "mht_movies"
+    },
+    "review": {
+      "type": "text",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "description": {
+      "type": "richtext",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "slug": {
+      "type": "uid",
+      "required": true
+    }
+  }
+}

@@ -484,6 +484,190 @@ export interface ApiMgsVideogameMgsVideogame
   };
 }
 
+export interface ApiMhtFranchiseMhtFranchise
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'mht_franchises';
+  info: {
+    description: '';
+    displayName: 'MHT-Franchise';
+    pluralName: 'mht-franchises';
+    singularName: 'mht-franchise';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.RichText &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::mht-franchise.mht-franchise'
+    >;
+    logo: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
+    mht_movies: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::mht-movie.mht-movie'
+    >;
+    mht_series: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::mht-serie.mht-serie'
+    >;
+    name: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    publishedAt: Schema.Attribute.DateTime;
+    slug: Schema.Attribute.UID & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiMhtMovieMhtMovie extends Struct.CollectionTypeSchema {
+  collectionName: 'mht_movies';
+  info: {
+    description: '';
+    displayName: 'MHT-Movie';
+    pluralName: 'mht-movies';
+    singularName: 'mht-movie';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.RichText &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    grade: Schema.Attribute.Decimal;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::mht-movie.mht-movie'
+    >;
+    logo: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
+    mht_franchise: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::mht-franchise.mht-franchise'
+    >;
+    name: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    publishedAt: Schema.Attribute.DateTime;
+    review: Schema.Attribute.Text &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    slug: Schema.Attribute.UID & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    watching_date: Schema.Attribute.DateTime & Schema.Attribute.Required;
+    watching_date_format: Schema.Attribute.Enumeration<
+      ['DD/MM/AAAA', '??/MM/AAAA', '??/??/AAAA']
+    >;
+  };
+}
+
+export interface ApiMhtSerieMhtSerie extends Struct.CollectionTypeSchema {
+  collectionName: 'mht_series';
+  info: {
+    displayName: 'MHT-Serie';
+    pluralName: 'mht-series';
+    singularName: 'mht-serie';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.RichText &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    end_watching_date: Schema.Attribute.DateTime;
+    end_watching_date_format: Schema.Attribute.Enumeration<
+      ['DD/MM/AAAA', '??/MM/AAAA', '??/??/AAAA']
+    >;
+    grade: Schema.Attribute.Decimal;
+    initial_watching_date: Schema.Attribute.DateTime &
+      Schema.Attribute.Required;
+    initial_watching_date_format: Schema.Attribute.Enumeration<
+      ['DD/MM/AAAA', '??/MM/AAAA', '??/??/AAAA']
+    >;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::mht-serie.mht-serie'
+    >;
+    logo: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
+    mht_franchise: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::mht-franchise.mht-franchise'
+    >;
+    name: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    publishedAt: Schema.Attribute.DateTime;
+    review: Schema.Attribute.Text &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    slug: Schema.Attribute.UID & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiYggFalseCvEventYggFalseCvEvent
   extends Struct.CollectionTypeSchema {
   collectionName: 'ygg_false_cv_events';
@@ -1489,6 +1673,9 @@ declare module '@strapi/strapi' {
       'admin::user': AdminUser;
       'api::mgs-serie.mgs-serie': ApiMgsSerieMgsSerie;
       'api::mgs-videogame.mgs-videogame': ApiMgsVideogameMgsVideogame;
+      'api::mht-franchise.mht-franchise': ApiMhtFranchiseMhtFranchise;
+      'api::mht-movie.mht-movie': ApiMhtMovieMhtMovie;
+      'api::mht-serie.mht-serie': ApiMhtSerieMhtSerie;
       'api::ygg-false-cv-event.ygg-false-cv-event': ApiYggFalseCvEventYggFalseCvEvent;
       'api::ygg-false-cv-group.ygg-false-cv-group': ApiYggFalseCvGroupYggFalseCvGroup;
       'api::ygg-job.ygg-job': ApiYggJobYggJob;

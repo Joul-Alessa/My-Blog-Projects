@@ -1,7 +1,7 @@
 'use strict';
 
 /**
- * mgs-serie controller
+ * mht-franchise controller
  */
 
 // Funciones para mezclado
@@ -40,16 +40,15 @@ function paginate(array, page, pageSize)
 
 const { createCoreController } = require('@strapi/strapi').factories;
 
-module.exports = createCoreController('api::mgs-serie.mgs-serie', ({ strapi }) => ({
+module.exports = createCoreController('api::mht-franchise.mht-franchise', ({ strapi }) => ({
   async find(ctx){
     const { query } = ctx;
 
     const locale = query.locale === undefined ? 'en' : query.locale;
-    const videogame = query.videogame;
     const seed = parseInt(query.randomSeed || "0", 10);
 
     var filters = {
-      select: ['name', 'description', 'started_playing_date', 'started_playing_date_format', 'slug', 'locale', 'createdAt'],
+      select: ['name', 'description', 'slug', 'locale', 'createdAt'],
       where: {
         locale,
         publishedAt: {
@@ -57,8 +56,16 @@ module.exports = createCoreController('api::mgs-serie.mgs-serie', ({ strapi }) =
         }
       },
       populate: {
-        mgs_videogame: {
-          select: ['name', 'description', 'release_date', 'release_date_format', 'started_playing_date', 'started_playing_date_format', 'slug', 'locale'],
+        mht_movies: {
+          select: ['name', 'watching_date', 'watching_date_format', 'grade', 'review', 'description', 'slug', 'locale', 'createdAt'],
+          populate: {
+            logo: {
+              select: ['name', 'alternativeText', 'formats']
+            }
+          }
+        },
+        mht_series: {
+          select: ['name', 'initial_watching_date', 'initial_watching_date_format', 'end_watching_date', 'end_watching_date_format', 'grade', 'review', 'description', 'slug', 'locale', 'createdAt'],
           populate: {
             logo: {
               select: ['name', 'alternativeText', 'formats']
@@ -85,14 +92,6 @@ module.exports = createCoreController('api::mgs-serie.mgs-serie', ({ strapi }) =
     {
       filters.orderBy = [{ name: 'desc' }];
     }
-    if(query.orderBy == 'startedPlayingDate-asc')
-    {
-      filters.orderBy = [{ started_playing_date: 'asc' }];
-    }
-    if(query.orderBy == 'startedPlayingDate-desc')
-    {
-      filters.orderBy = [{ started_playing_date: 'desc' }];
-    }
     if(query.orderBy == 'createdAtDate-asc')
     {
       filters.orderBy = [{ createdAt: 'asc' }];
@@ -101,26 +100,12 @@ module.exports = createCoreController('api::mgs-serie.mgs-serie', ({ strapi }) =
     {
       filters.orderBy = [{ createdAt: 'desc' }];
     }
-    if(query.orderBy != 'name-desc' && query.orderBy != 'startedPlayingDate-asc' && query.orderBy != 'startedPlayingDate-desc')
+    if(query.orderBy != 'name-desc' && query.orderBy != 'createdAtDate-asc' && query.orderBy != 'createdAtDate-desc')
     {
       filters.orderBy = [{ name: 'asc' }];
     }
 
-    if(videogame != undefined)
-    {
-      filters.where.mgs_videogame = {
-        slug: {
-          $eq: videogame
-        }
-      };
-      filters.populate.mgs_videogame.where = {
-        slug: {
-          $eq: videogame
-        }
-      };
-    }
-
-    const entity = await strapi.db.query('api::mgs-serie.mgs-serie').findMany(filters);
+    const entity = await strapi.db.query('api::mht-franchise.mht-franchise').findMany(filters);
 
     var page = query.page != undefined ? query.page : "1";
     var pageSize = query.pageSize != undefined ? query.pageSize : entity.length;
@@ -139,8 +124,8 @@ module.exports = createCoreController('api::mgs-serie.mgs-serie', ({ strapi }) =
 
     const locale = query.locale === undefined ? 'en' : query.locale;
 
-    const entity = await strapi.db.query('api::mgs-serie.mgs-serie').findOne({
-      select: ['name', 'description', 'started_playing_date', 'started_playing_date_format', 'slug', 'locale', 'createdAt'],
+    const entity = await strapi.db.query('api::mht-franchise.mht-franchise').findOne({
+      select: ['name', 'description', 'slug', 'locale', 'createdAt'],
       where: {
         slug,
         locale,
@@ -149,8 +134,16 @@ module.exports = createCoreController('api::mgs-serie.mgs-serie', ({ strapi }) =
         }
       },
       populate: {
-        mgs_videogame: {
-          select: ['name', 'description', 'release_date', 'release_date_format', 'started_playing_date', 'started_playing_date_format', 'slug', 'locale'],
+        mht_movies: {
+          select: ['name', 'watching_date', 'watching_date_format', 'grade', 'review', 'description', 'slug', 'locale', 'createdAt'],
+          populate: {
+            logo: {
+              select: ['name', 'alternativeText', 'formats']
+            }
+          }
+        },
+        mht_series: {
+          select: ['name', 'initial_watching_date', 'initial_watching_date_format', 'end_watching_date', 'end_watching_date_format', 'grade', 'review', 'description', 'slug', 'locale', 'createdAt'],
           populate: {
             logo: {
               select: ['name', 'alternativeText', 'formats']

@@ -57,7 +57,12 @@ module.exports = createCoreController('api::mgs-videogame.mgs-videogame', ({ str
       },
       populate: {
         mgs_series: {
-          select: ['name', 'description', 'started_playing_date', 'started_playing_date_format', 'slug', 'locale']
+          select: ['name', 'description', 'started_playing_date', 'started_playing_date_format', 'slug', 'locale'],
+          populate: {
+            logo: {
+              select: ['name', 'alternativeText', 'formats']
+            }
+          }
         },
         logo: {
           select: ['name', 'alternativeText', 'formats']
@@ -103,7 +108,7 @@ module.exports = createCoreController('api::mgs-videogame.mgs-videogame', ({ str
     {
       filters.orderBy = [{ createdAt: 'desc' }];
     }
-    if(query.orderBy != 'name-desc' && query.orderBy != 'releaseDate-asc' && query.orderBy != 'releaseDate-desc' && query.orderBy != 'startedPlayingDate-asc' && query.orderBy != 'startedPlayingDate-desc')
+    if(query.orderBy != 'name-desc' && query.orderBy != 'releaseDate-asc' && query.orderBy != 'releaseDate-desc' && query.orderBy != 'startedPlayingDate-asc' && query.orderBy != 'startedPlayingDate-desc' && query.orderBy != 'createdAtDate-desc' && query.orderBy != 'createdAtDate-desc')
     {
       filters.orderBy = [{ name: 'asc' }];
     }
@@ -138,7 +143,12 @@ module.exports = createCoreController('api::mgs-videogame.mgs-videogame', ({ str
       },
       populate: {
         mgs_series: {
-          select: ['name', 'description', 'started_playing_date', 'started_playing_date_format', 'slug', 'locale']
+          select: ['name', 'description', 'started_playing_date', 'started_playing_date_format', 'slug', 'locale'],
+          populate: {
+            logo: {
+              select: ['name', 'alternativeText', 'formats']
+            }
+          }
         },
         logo: {
           select: ['name', 'alternativeText', 'formats']
