@@ -1,10 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "mht_series",
+  "collectionName": "mht_seasons",
   "info": {
-    "singularName": "mht-serie",
-    "pluralName": "mht-series",
-    "displayName": "MHT-Serie",
+    "singularName": "mht-season",
+    "pluralName": "mht-seasons",
+    "displayName": "MHT-Season",
     "description": ""
   },
   "options": {
@@ -25,13 +25,9 @@
         }
       }
     },
-    "logo": {
-      "type": "media",
-      "multiple": false,
-      "required": true,
-      "allowedTypes": [
-        "images"
-      ]
+    "season_number": {
+      "type": "integer",
+      "required": true
     },
     "initial_watching_date": {
       "type": "datetime",
@@ -56,14 +52,22 @@
         "??/??/AAAA"
       ]
     },
+    "logo": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
     "grade": {
       "type": "decimal"
     },
-    "mht_franchise": {
+    "mht_serie": {
       "type": "relation",
       "relation": "manyToOne",
-      "target": "api::mht-franchise.mht-franchise",
-      "inversedBy": "mht_series"
+      "target": "api::mht-serie.mht-serie",
+      "inversedBy": "mht_seasons"
     },
     "review": {
       "type": "text",
@@ -81,9 +85,11 @@
         }
       }
     },
-    "slug": {
-      "type": "uid",
-      "required": true
+    "mht_chapters": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::mht-chapter.mht-chapter",
+      "mappedBy": "mht_season"
     },
     "release_date": {
       "type": "datetime",
@@ -97,11 +103,9 @@
         "??/??/AAAA"
       ]
     },
-    "mht_seasons": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::mht-season.mht-season",
-      "mappedBy": "mht_serie"
+    "slug": {
+      "type": "uid",
+      "required": true
     }
   }
 }

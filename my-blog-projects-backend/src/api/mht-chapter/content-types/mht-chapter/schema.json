@@ -1,10 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "mht_movies",
+  "collectionName": "mht_chapters",
   "info": {
-    "singularName": "mht-movie",
-    "pluralName": "mht-movies",
-    "displayName": "MHT-Movie",
+    "singularName": "mht-chapter",
+    "pluralName": "mht-chapters",
+    "displayName": "MHT-Chapter",
     "description": ""
   },
   "options": {
@@ -25,13 +25,9 @@
         }
       }
     },
-    "logo": {
-      "type": "media",
-      "multiple": false,
-      "required": true,
-      "allowedTypes": [
-        "images"
-      ]
+    "chapter_number": {
+      "type": "integer",
+      "required": true
     },
     "watching_date": {
       "type": "datetime",
@@ -48,11 +44,11 @@
     "grade": {
       "type": "decimal"
     },
-    "mht_franchise": {
+    "mht_season": {
       "type": "relation",
       "relation": "manyToOne",
-      "target": "api::mht-franchise.mht-franchise",
-      "inversedBy": "mht_movies"
+      "target": "api::mht-season.mht-season",
+      "inversedBy": "mht_chapters"
     },
     "review": {
       "type": "text",
@@ -73,18 +69,6 @@
     "slug": {
       "type": "uid",
       "required": true
-    },
-    "release_date": {
-      "type": "datetime",
-      "required": true
-    },
-    "release_date_format": {
-      "type": "enumeration",
-      "enum": [
-        "DD/MM/AAAA",
-        "??/MM/AAAA",
-        "??/??/AAAA"
-      ]
     }
   }
 }

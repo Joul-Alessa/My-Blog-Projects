@@ -1,7 +1,7 @@
 'use strict';
 
 /**
- * mht-movie controller
+ * mht-season controller
  */
 
 // Funciones para mezclado
@@ -40,16 +40,16 @@ function paginate(array, page, pageSize)
 
 const { createCoreController } = require('@strapi/strapi').factories;
 
-module.exports = createCoreController('api::mht-movie.mht-movie', ({ strapi }) => ({
+module.exports = createCoreController('api::mht-season.mht-season', ({ strapi }) => ({
   async find(ctx){
     const { query } = ctx;
 
     const locale = query.locale === undefined ? 'en' : query.locale;
-    const franchise = query.franchise;
+    const serie = query.serie;
     const seed = parseInt(query.randomSeed || "0", 10);
 
     var filters = {
-      select: ['name', 'description', 'watching_date', 'watching_date_format', 'release_date', 'release_date_format', 'grade', 'review', 'slug', 'locale', 'createdAt'],
+      select: ['name', 'season_number', 'initial_watching_date', 'initial_watching_date_format', 'end_watching_date', 'end_watching_date_format', 'release_date', 'release_date_format', 'grade', 'review', 'description', 'slug', 'locale', 'createdAt'],
       where: {
         locale,
         publishedAt: {
@@ -57,8 +57,16 @@ module.exports = createCoreController('api::mht-movie.mht-movie', ({ strapi }) =
         }
       },
       populate: {
-        mht_franchise: {
-          select: ['name', 'slug', 'locale', 'createdAt'],
+        mht_serie: {
+          select: ['name', 'initial_watching_date', 'initial_watching_date_format', 'end_watching_date', 'end_watching_date_format', 'release_date', 'release_date_format', 'grade', 'review', 'slug', 'locale', 'createdAt'],
+          populate: {
+            logo: {
+              select: ['name', 'alternativeText', 'formats']
+            }
+          }
+        },
+        mht_chapters: {
+          select: ['name', 'chapter_number', 'watching_date', 'watching_date_format', 'grade', 'review', 'slug'],
           populate: {
             logo: {
               select: ['name', 'alternativeText', 'formats']
@@ -85,6 +93,14 @@ module.exports = createCoreController('api::mht-movie.mht-movie', ({ strapi }) =
     {
       filters.orderBy = [{ name: 'desc' }];
     }
+    if(query.orderBy == 'seasonNumber-asc')
+    {
+      filters.orderBy = [{ season_number: 'asc' }];
+    }
+    if(query.orderBy == 'seasonNumber-desc')
+    {
+      filters.orderBy = [{ season_number: 'desc' }];
+    }
     if(query.orderBy == 'releaseDate-asc')
     {
       filters.orderBy = [{ release_date: 'asc' }];
@@ -93,13 +109,13 @@ module.exports = createCoreController('api::mht-movie.mht-movie', ({ strapi }) =
     {
       filters.orderBy = [{ release_date: 'desc' }];
     }
-    if(query.orderBy == 'watchingDate-asc')
+    if(query.orderBy == 'initialWatchingDate-asc')
     {
-      filters.orderBy = [{ watching_date: 'asc' }];
+      filters.orderBy = [{ initial_watching_date: 'asc' }];
     }
-    if(query.orderBy == 'watchingDate-desc')
+    if(query.orderBy == 'initialWatchingDate-desc')
     {
-      filters.orderBy = [{ watching_date: 'desc' }];
+      filters.orderBy = [{ initial_watching_date: 'desc' }];
     }
     if(query.orderBy == 'createdAtDate-asc')
     {
@@ -117,26 +133,26 @@ module.exports = createCoreController('api::mht-movie.mht-movie', ({ strapi }) =
     {
       filters.orderBy = [{ grade: 'desc' }];
     }
-    if(query.orderBy != 'name-desc' && query.orderBy != 'releaseDate-asc' && query.orderBy != 'releaseDate-desc' && query.orderBy != 'watchingDate-asc' && query.orderBy != 'watchingDate-desc' && query.orderBy != 'createdAtDate-asc' && query.orderBy != 'createdAtDate-desc' && query.orderBy != 'grade-asc' && query.orderBy != 'grade-desc')
+    if(query.orderBy != 'name-desc' && query.orderBy != 'seasonNumber-asc' && query.orderBy != 'seasonNumber-asc' && query.orderBy != 'releaseDate-asc' && query.orderBy != 'releaseDate-desc' && query.orderBy != 'initialWatchingDate-asc' && query.orderBy != 'initialWatchingDate-desc' && query.orderBy != 'createdAtDate-asc' && query.orderBy != 'createdAtDate-desc' && query.orderBy != 'grade-asc' && query.orderBy != 'grade-desc')
     {
       filters.orderBy = [{ name: 'asc' }];
     }
 
-    if(franchise != undefined)
+    if(serie != undefined)
     {
-      filters.where.mht_franchise = {
+      filters.where.mht_serie = {
         slug: {
-          $eq: franchise
+          $eq: serie
         }
       };
-      filters.populate.mht_franchise.where = {
+      filters.populate.mht_serie.where = {
         slug: {
-          $eq: franchise
+          $eq: serie
         }
       };
     }
 
-    const entity = await strapi.db.query('api::mht-movie.mht-movie').findMany(filters);
+    const entity = await strapi.db.query('api::mht-season.mht-season').findMany(filters);
 
     var page = query.page != undefined ? query.page : "1";
     var pageSize = query.pageSize != undefined ? query.pageSize : entity.length;
@@ -155,8 +171,8 @@ module.exports = createCoreController('api::mht-movie.mht-movie', ({ strapi }) =
 
     const locale = query.locale === undefined ? 'en' : query.locale;
 
-    const entity = await strapi.db.query('api::mht-movie.mht-movie').findOne({
-      select: ['name', 'description', 'watching_date', 'watching_date_format', 'release_date', 'release_date_format', 'grade', 'review', 'slug', 'locale', 'createdAt'],
+    const entity = await strapi.db.query('api::mht-season.mht-season').findOne({
+      select: ['name', 'season_number', 'initial_watching_date', 'initial_watching_date_format', 'end_watching_date', 'end_watching_date_format', 'release_date', 'release_date_format', 'grade', 'review', 'description', 'slug', 'locale', 'createdAt'],
       where: {
         slug,
         locale,
@@ -165,8 +181,16 @@ module.exports = createCoreController('api::mht-movie.mht-movie', ({ strapi }) =
         }
       },
       populate: {
-        mht_franchise: {
-          select: ['name', 'slug', 'locale', 'createdAt'],
+        mht_serie: {
+          select: ['name', 'initial_watching_date', 'initial_watching_date_format', 'end_watching_date', 'end_watching_date_format', 'release_date', 'release_date_format', 'grade', 'review', 'slug', 'locale', 'createdAt'],
+          populate: {
+            logo: {
+              select: ['name', 'alternativeText', 'formats']
+            }
+          }
+        },
+        mht_chapters: {
+          select: ['name', 'chapter_number', 'watching_date', 'watching_date_format', 'grade', 'review', 'slug'],
           populate: {
             logo: {
               select: ['name', 'alternativeText', 'formats']
