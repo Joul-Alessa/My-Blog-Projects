@@ -517,6 +517,7 @@ export interface ApiMhtChapterMhtChapter extends Struct.CollectionTypeSchema {
       'oneToMany',
       'api::mht-chapter.mht-chapter'
     >;
+    logo: Schema.Attribute.Media<'images'>;
     mht_season: Schema.Attribute.Relation<
       'manyToOne',
       'api::mht-season.mht-season'
