@@ -72,6 +72,9 @@
       "relation": "oneToMany",
       "target": "api::mgs-serie.mgs-serie",
       "mappedBy": "mgs_videogame"
+    },
+    "grade": {
+      "type": "decimal"
     }
   }
 }

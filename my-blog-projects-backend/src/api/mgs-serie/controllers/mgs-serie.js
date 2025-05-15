@@ -49,7 +49,7 @@ module.exports = createCoreController('api::mgs-serie.mgs-serie', ({ strapi }) =
     const seed = parseInt(query.randomSeed || "0", 10);
 
     var filters = {
-      select: ['name', 'description', 'started_playing_date', 'started_playing_date_format', 'slug', 'locale', 'createdAt'],
+      select: ['name', 'description', 'started_playing_date', 'started_playing_date_format', 'slug', 'grade', 'locale', 'createdAt'],
       where: {
         locale,
         publishedAt: {
@@ -58,7 +58,7 @@ module.exports = createCoreController('api::mgs-serie.mgs-serie', ({ strapi }) =
       },
       populate: {
         mgs_videogame: {
-          select: ['name', 'description', 'release_date', 'release_date_format', 'started_playing_date', 'started_playing_date_format', 'slug', 'locale'],
+          select: ['name', 'description', 'release_date', 'release_date_format', 'started_playing_date', 'started_playing_date_format', 'slug', 'grade', 'locale'],
           populate: {
             logo: {
               select: ['name', 'alternativeText', 'formats']
@@ -140,7 +140,7 @@ module.exports = createCoreController('api::mgs-serie.mgs-serie', ({ strapi }) =
     const locale = query.locale === undefined ? 'en' : query.locale;
 
     const entity = await strapi.db.query('api::mgs-serie.mgs-serie').findOne({
-      select: ['name', 'description', 'started_playing_date', 'started_playing_date_format', 'slug', 'locale', 'createdAt'],
+      select: ['name', 'description', 'started_playing_date', 'started_playing_date_format', 'slug', 'grade', 'locale', 'createdAt'],
       where: {
         slug,
         locale,
@@ -150,7 +150,7 @@ module.exports = createCoreController('api::mgs-serie.mgs-serie', ({ strapi }) =
       },
       populate: {
         mgs_videogame: {
-          select: ['name', 'description', 'release_date', 'release_date_format', 'started_playing_date', 'started_playing_date_format', 'slug', 'locale'],
+          select: ['name', 'description', 'release_date', 'release_date_format', 'started_playing_date', 'started_playing_date_format', 'slug', 'grade', 'locale'],
           populate: {
             logo: {
               select: ['name', 'alternativeText', 'formats']

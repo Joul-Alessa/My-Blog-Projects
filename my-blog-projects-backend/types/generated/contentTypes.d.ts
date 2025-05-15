@@ -395,6 +395,7 @@ export interface ApiMgsSerieMgsSerie extends Struct.CollectionTypeSchema {
           localized: true;
         };
       }>;
+    grade: Schema.Attribute.Decimal;
     locale: Schema.Attribute.String;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -451,6 +452,7 @@ export interface ApiMgsVideogameMgsVideogame
           localized: true;
         };
       }>;
+    grade: Schema.Attribute.Decimal;
     locale: Schema.Attribute.String;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -517,7 +519,7 @@ export interface ApiMhtChapterMhtChapter extends Struct.CollectionTypeSchema {
       'oneToMany',
       'api::mht-chapter.mht-chapter'
     >;
-    logo: Schema.Attribute.Media<'images'>;
+    logo: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
     mht_season: Schema.Attribute.Relation<
       'manyToOne',
       'api::mht-season.mht-season'
