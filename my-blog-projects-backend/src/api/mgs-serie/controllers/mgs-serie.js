@@ -101,7 +101,15 @@ module.exports = createCoreController('api::mgs-serie.mgs-serie', ({ strapi }) =
     {
       filters.orderBy = [{ createdAt: 'desc' }];
     }
-    if(query.orderBy != 'name-desc' && query.orderBy != 'startedPlayingDate-asc' && query.orderBy != 'startedPlayingDate-desc')
+    if(query.orderBy == 'grade-asc')
+    {
+      filters.orderBy = [{ grade: 'asc' }];
+    }
+    if(query.orderBy == 'grade-desc')
+    {
+      filters.orderBy = [{ grade: 'desc' }];
+    }
+    if(query.orderBy != 'name-desc' && query.orderBy != 'startedPlayingDate-asc' && query.orderBy != 'startedPlayingDate-desc' && query.orderBy != 'grade-asc' && query.orderBy != 'grade-desc')
     {
       filters.orderBy = [{ name: 'asc' }];
     }

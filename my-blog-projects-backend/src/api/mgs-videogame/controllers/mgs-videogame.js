@@ -108,7 +108,15 @@ module.exports = createCoreController('api::mgs-videogame.mgs-videogame', ({ str
     {
       filters.orderBy = [{ createdAt: 'desc' }];
     }
-    if(query.orderBy != 'name-desc' && query.orderBy != 'releaseDate-asc' && query.orderBy != 'releaseDate-desc' && query.orderBy != 'startedPlayingDate-asc' && query.orderBy != 'startedPlayingDate-desc' && query.orderBy != 'createdAtDate-asc' && query.orderBy != 'createdAtDate-desc')
+    if(query.orderBy == 'grade-asc')
+    {
+      filters.orderBy = [{ grade: 'asc' }];
+    }
+    if(query.orderBy == 'grade-desc')
+    {
+      filters.orderBy = [{ grade: 'desc' }];
+    }
+    if(query.orderBy != 'name-desc' && query.orderBy != 'releaseDate-asc' && query.orderBy != 'releaseDate-desc' && query.orderBy != 'startedPlayingDate-asc' && query.orderBy != 'startedPlayingDate-desc' && query.orderBy != 'createdAtDate-asc' && query.orderBy != 'createdAtDate-desc' && query.orderBy != 'grade-asc' && query.orderBy != 'grade-desc')
     {
       filters.orderBy = [{ name: 'asc' }];
     }
