@@ -486,6 +486,68 @@ export interface ApiMgsVideogameMgsVideogame
   };
 }
 
+export interface ApiMhtChannelMhtChannel extends Struct.CollectionTypeSchema {
+  collectionName: 'mht_channels';
+  info: {
+    description: '';
+    displayName: 'MHT-Channel';
+    pluralName: 'mht-channels';
+    singularName: 'mht-channel';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.RichText &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    initial_meeting_date: Schema.Attribute.DateTime & Schema.Attribute.Required;
+    initial_meeting_date_format: Schema.Attribute.Enumeration<
+      ['DD/MM/AAAA', '??/MM/AAAA', '??/??/AAAA']
+    >;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::mht-channel.mht-channel'
+    >;
+    logo: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
+    mht_videos: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::mht-video.mht-video'
+    >;
+    name: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    publishedAt: Schema.Attribute.DateTime;
+    review: Schema.Attribute.Text &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    slug: Schema.Attribute.UID & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    url: Schema.Attribute.String;
+  };
+}
+
 export interface ApiMhtChapterMhtChapter extends Struct.CollectionTypeSchema {
   collectionName: 'mht_chapters';
   info: {
@@ -671,6 +733,63 @@ export interface ApiMhtMovieMhtMovie extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiMhtPlaylistMhtPlaylist extends Struct.CollectionTypeSchema {
+  collectionName: 'mht_playlists';
+  info: {
+    displayName: 'MHT-Playlist';
+    pluralName: 'mht-playlists';
+    singularName: 'mht-playlist';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.RichText &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    grade: Schema.Attribute.Decimal;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::mht-playlist.mht-playlist'
+    >;
+    logo: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
+    mht_videos: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::mht-video.mht-video'
+    >;
+    name: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    publishedAt: Schema.Attribute.DateTime;
+    review: Schema.Attribute.Text &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    slug: Schema.Attribute.UID & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiMhtSeasonMhtSeason extends Struct.CollectionTypeSchema {
   collectionName: 'mht_seasons';
   info: {
@@ -819,6 +938,77 @@ export interface ApiMhtSerieMhtSerie extends Struct.CollectionTypeSchema {
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+  };
+}
+
+export interface ApiMhtVideoMhtVideo extends Struct.CollectionTypeSchema {
+  collectionName: 'mht_videos';
+  info: {
+    description: '';
+    displayName: 'MHT-Video';
+    pluralName: 'mht-videos';
+    singularName: 'mht-video';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.RichText &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    grade: Schema.Attribute.Decimal;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::mht-video.mht-video'
+    >;
+    logo: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
+    mht_channel: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::mht-channel.mht-channel'
+    >;
+    mht_playlist: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::mht-playlist.mht-playlist'
+    >;
+    name: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    publishedAt: Schema.Attribute.DateTime;
+    release_date: Schema.Attribute.DateTime & Schema.Attribute.Required;
+    release_date_format: Schema.Attribute.Enumeration<
+      ['DD/MM/AAAA', '??/MM/AAAA', '??/??/AAAA']
+    >;
+    review: Schema.Attribute.Text &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    slug: Schema.Attribute.UID & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    url: Schema.Attribute.String;
+    watching_date: Schema.Attribute.DateTime & Schema.Attribute.Required;
+    watching_date_format: Schema.Attribute.Enumeration<
+      ['DD/MM/AAAA', '??/MM/AAAA', '??/??/AAAA']
+    >;
   };
 }
 
@@ -1827,11 +2017,14 @@ declare module '@strapi/strapi' {
       'admin::user': AdminUser;
       'api::mgs-serie.mgs-serie': ApiMgsSerieMgsSerie;
       'api::mgs-videogame.mgs-videogame': ApiMgsVideogameMgsVideogame;
+      'api::mht-channel.mht-channel': ApiMhtChannelMhtChannel;
       'api::mht-chapter.mht-chapter': ApiMhtChapterMhtChapter;
       'api::mht-franchise.mht-franchise': ApiMhtFranchiseMhtFranchise;
       'api::mht-movie.mht-movie': ApiMhtMovieMhtMovie;
+      'api::mht-playlist.mht-playlist': ApiMhtPlaylistMhtPlaylist;
       'api::mht-season.mht-season': ApiMhtSeasonMhtSeason;
       'api::mht-serie.mht-serie': ApiMhtSerieMhtSerie;
+      'api::mht-video.mht-video': ApiMhtVideoMhtVideo;
       'api::ygg-false-cv-event.ygg-false-cv-event': ApiYggFalseCvEventYggFalseCvEvent;
       'api::ygg-false-cv-group.ygg-false-cv-group': ApiYggFalseCvGroupYggFalseCvGroup;
       'api::ygg-job.ygg-job': ApiYggJobYggJob;

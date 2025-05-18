@@ -1,0 +1,65 @@
+{
+  "kind": "collectionType",
+  "collectionName": "mht_playlists",
+  "info": {
+    "singularName": "mht-playlist",
+    "pluralName": "mht-playlists",
+    "displayName": "MHT-Playlist"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "review": {
+      "type": "text",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "description": {
+      "type": "richtext",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "slug": {
+      "type": "uid",
+      "required": true
+    },
+    "logo": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": true
+    },
+    "grade": {
+      "type": "decimal"
+    },
+    "mht_videos": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::mht-video.mht-video",
+      "mappedBy": "mht_playlist"
+    }
+  }
+}
