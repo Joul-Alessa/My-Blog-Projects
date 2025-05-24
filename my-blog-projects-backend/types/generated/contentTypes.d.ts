@@ -667,6 +667,121 @@ export interface ApiMhtFranchiseMhtFranchise
   };
 }
 
+export interface ApiMhtLeagueMhtLeague extends Struct.CollectionTypeSchema {
+  collectionName: 'mht_leagues';
+  info: {
+    description: '';
+    displayName: 'MHT-League';
+    pluralName: 'mht-leagues';
+    singularName: 'mht-league';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.RichText &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    grade: Schema.Attribute.Decimal;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::mht-league.mht-league'
+    >;
+    logo: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
+    mht_sport: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::mht-sport.mht-sport'
+    >;
+    mht_tournaments: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::mht-tournament.mht-tournament'
+    >;
+    name: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    publishedAt: Schema.Attribute.DateTime;
+    slug: Schema.Attribute.UID & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiMhtMatchMhtMatch extends Struct.CollectionTypeSchema {
+  collectionName: 'mht_matches';
+  info: {
+    description: '';
+    displayName: 'MHT-Match';
+    pluralName: 'mht-matches';
+    singularName: 'mht-match';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.RichText &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    grade: Schema.Attribute.Decimal;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::mht-match.mht-match'
+    >;
+    mht_tournament: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::mht-tournament.mht-tournament'
+    >;
+    name: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    publishedAt: Schema.Attribute.DateTime;
+    release_date: Schema.Attribute.DateTime & Schema.Attribute.Required;
+    release_date_format: Schema.Attribute.Enumeration<
+      ['DD/MM/AAAA', '??/MM/AAAA', '??/??/AAAA']
+    >;
+    slug: Schema.Attribute.UID & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    watching_date: Schema.Attribute.DateTime & Schema.Attribute.Required;
+    watching_date_format: Schema.Attribute.Enumeration<
+      ['DD/MM/AAAA', '??/MM/AAAA', '??/??/AAAA']
+    >;
+  };
+}
+
 export interface ApiMhtMovieMhtMovie extends Struct.CollectionTypeSchema {
   collectionName: 'mht_movies';
   info: {
@@ -934,6 +1049,131 @@ export interface ApiMhtSerieMhtSerie extends Struct.CollectionTypeSchema {
           localized: true;
         };
       }>;
+    slug: Schema.Attribute.UID & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiMhtSportMhtSport extends Struct.CollectionTypeSchema {
+  collectionName: 'mht_sports';
+  info: {
+    description: '';
+    displayName: 'MHT-Sport';
+    pluralName: 'mht-sports';
+    singularName: 'mht-sport';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.RichText &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    grade: Schema.Attribute.Decimal;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::mht-sport.mht-sport'
+    >;
+    logo: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
+    mht_leagues: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::mht-league.mht-league'
+    >;
+    name: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    publishedAt: Schema.Attribute.DateTime;
+    slug: Schema.Attribute.UID & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiMhtTournamentMhtTournament
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'mht_tournaments';
+  info: {
+    description: '';
+    displayName: 'MHT-Tournament';
+    pluralName: 'mht-tournaments';
+    singularName: 'mht-tournament';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.RichText &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    end_release_date: Schema.Attribute.DateTime;
+    end_release_date_format: Schema.Attribute.Enumeration<
+      ['DD/MM/AAAA', '??/MM/AAAA', '??/??/AAAA']
+    >;
+    end_watching_date: Schema.Attribute.DateTime;
+    end_watching_date_format: Schema.Attribute.Enumeration<
+      ['DD/MM/AAAA', '??/MM/AAAA', '??/??/AAAA']
+    >;
+    grade: Schema.Attribute.Decimal;
+    initial_release_date: Schema.Attribute.DateTime & Schema.Attribute.Required;
+    initial_release_date_format: Schema.Attribute.Enumeration<
+      ['DD/MM/AAAA', '??/MM/AAAA', '??/??/AAAA']
+    >;
+    initial_watching_date: Schema.Attribute.DateTime &
+      Schema.Attribute.Required;
+    initial_watching_date_format: Schema.Attribute.Enumeration<
+      ['DD/MM/AAAA', '??/MM/AAAA', '??/??/AAAA']
+    >;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::mht-tournament.mht-tournament'
+    >;
+    mht_league: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::mht-league.mht-league'
+    >;
+    mht_matches: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::mht-match.mht-match'
+    >;
+    name: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    publishedAt: Schema.Attribute.DateTime;
     slug: Schema.Attribute.UID & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -2020,10 +2260,14 @@ declare module '@strapi/strapi' {
       'api::mht-channel.mht-channel': ApiMhtChannelMhtChannel;
       'api::mht-chapter.mht-chapter': ApiMhtChapterMhtChapter;
       'api::mht-franchise.mht-franchise': ApiMhtFranchiseMhtFranchise;
+      'api::mht-league.mht-league': ApiMhtLeagueMhtLeague;
+      'api::mht-match.mht-match': ApiMhtMatchMhtMatch;
       'api::mht-movie.mht-movie': ApiMhtMovieMhtMovie;
       'api::mht-playlist.mht-playlist': ApiMhtPlaylistMhtPlaylist;
       'api::mht-season.mht-season': ApiMhtSeasonMhtSeason;
       'api::mht-serie.mht-serie': ApiMhtSerieMhtSerie;
+      'api::mht-sport.mht-sport': ApiMhtSportMhtSport;
+      'api::mht-tournament.mht-tournament': ApiMhtTournamentMhtTournament;
       'api::mht-video.mht-video': ApiMhtVideoMhtVideo;
       'api::ygg-false-cv-event.ygg-false-cv-event': ApiYggFalseCvEventYggFalseCvEvent;
       'api::ygg-false-cv-group.ygg-false-cv-group': ApiYggFalseCvGroupYggFalseCvGroup;

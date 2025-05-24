@@ -1,0 +1,58 @@
+{
+  "kind": "collectionType",
+  "collectionName": "mht_sports",
+  "info": {
+    "singularName": "mht-sport",
+    "pluralName": "mht-sports",
+    "displayName": "MHT-Sport",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "name": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "required": true
+    },
+    "logo": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "description": {
+      "type": "richtext",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "slug": {
+      "type": "uid",
+      "required": true
+    },
+    "mht_leagues": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::mht-league.mht-league",
+      "mappedBy": "mht_sport"
+    },
+    "grade": {
+      "type": "decimal"
+    }
+  }
+}
