@@ -35,7 +35,7 @@ module.exports = createCoreController('api::ygg-project.ygg-project', ({ strapi 
     const projectType = query.projectType;
 
     var filters = {
-      select: ['name', 'review', 'url', 'locale', 'slug'],
+      select: ['name', 'review', 'description', 'project_type', 'url', 'locale', 'slug'],
       where: {
         locale,
         publishedAt: {

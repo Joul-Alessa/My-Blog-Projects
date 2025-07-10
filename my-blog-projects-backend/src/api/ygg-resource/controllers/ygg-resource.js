@@ -49,7 +49,7 @@ module.exports = createCoreController('api::ygg-resource.ygg-resource', ({ strap
     const seed = parseInt(query.randomSeed || "0", 10);
 
     var filters = {
-      select: ['name', 'review', 'url', 'locale', 'slug'],
+      select: ['name', 'review', 'description', 'url', 'locale', 'slug'],
       where: {
         locale,
         publishedAt: {

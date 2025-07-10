@@ -1252,6 +1252,188 @@ export interface ApiMhtVideoMhtVideo extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiMmlAlbumMmlAlbum extends Struct.CollectionTypeSchema {
+  collectionName: 'mml_albums';
+  info: {
+    description: '';
+    displayName: 'MML-Album';
+    pluralName: 'mml-albums';
+    singularName: 'mml-album';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    album_type: Schema.Attribute.Enumeration<
+      ['album', 'ep', 'single', 'compilation']
+    >;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.RichText &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    grade: Schema.Attribute.Decimal;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::mml-album.mml-album'
+    >;
+    logo: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
+    meeting_date: Schema.Attribute.DateTime & Schema.Attribute.Required;
+    meeting_date_format: Schema.Attribute.Enumeration<
+      ['DD/MM/AAAA', '??/MM/AAAA', '??/??/AAAA']
+    >;
+    mml_songs: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::mml-song.mml-song'
+    >;
+    name: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    publishedAt: Schema.Attribute.DateTime;
+    release_date: Schema.Attribute.DateTime & Schema.Attribute.Required;
+    release_date_format: Schema.Attribute.Enumeration<
+      ['DD/MM/AAAA', '??/MM/AAAA', '??/??/AAAA']
+    >;
+    slug: Schema.Attribute.UID & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiMmlArtistMmlArtist extends Struct.CollectionTypeSchema {
+  collectionName: 'mml_artists';
+  info: {
+    description: '';
+    displayName: 'MML-Artist';
+    pluralName: 'mml-artists';
+    singularName: 'mml-artist';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.RichText &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    grade: Schema.Attribute.Decimal;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::mml-artist.mml-artist'
+    >;
+    logo: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
+    meeting_date: Schema.Attribute.DateTime & Schema.Attribute.Required;
+    meeting_date_format: Schema.Attribute.Enumeration<
+      ['DD/MM/AAAA', '??/MM/AAAA', '??/??/AAAA']
+    >;
+    mml_songs: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::mml-song.mml-song'
+    >;
+    name: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    publishedAt: Schema.Attribute.DateTime;
+    slug: Schema.Attribute.UID & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiMmlSongMmlSong extends Struct.CollectionTypeSchema {
+  collectionName: 'mml_songs';
+  info: {
+    description: '';
+    displayName: 'MML-Song';
+    pluralName: 'mml-songs';
+    singularName: 'mml-song';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.RichText &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    grade: Schema.Attribute.Decimal;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::mml-song.mml-song'
+    >;
+    meeting_date: Schema.Attribute.DateTime & Schema.Attribute.Required;
+    meeting_date_format: Schema.Attribute.Enumeration<
+      ['DD/MM/AAAA', '??/MM/AAAA', '??/??/AAAA']
+    >;
+    mml_albums: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::mml-album.mml-album'
+    >;
+    mml_artists: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::mml-artist.mml-artist'
+    >;
+    name: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    publishedAt: Schema.Attribute.DateTime;
+    release_date: Schema.Attribute.DateTime & Schema.Attribute.Required;
+    release_date_format: Schema.Attribute.Enumeration<
+      ['DD/MM/AAAA', '??/MM/AAAA', '??/??/AAAA']
+    >;
+    slug: Schema.Attribute.UID & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiYggFalseCvEventYggFalseCvEvent
   extends Struct.CollectionTypeSchema {
   collectionName: 'ygg_false_cv_events';
@@ -2269,6 +2451,9 @@ declare module '@strapi/strapi' {
       'api::mht-sport.mht-sport': ApiMhtSportMhtSport;
       'api::mht-tournament.mht-tournament': ApiMhtTournamentMhtTournament;
       'api::mht-video.mht-video': ApiMhtVideoMhtVideo;
+      'api::mml-album.mml-album': ApiMmlAlbumMmlAlbum;
+      'api::mml-artist.mml-artist': ApiMmlArtistMmlArtist;
+      'api::mml-song.mml-song': ApiMmlSongMmlSong;
       'api::ygg-false-cv-event.ygg-false-cv-event': ApiYggFalseCvEventYggFalseCvEvent;
       'api::ygg-false-cv-group.ygg-false-cv-group': ApiYggFalseCvGroupYggFalseCvGroup;
       'api::ygg-job.ygg-job': ApiYggJobYggJob;
