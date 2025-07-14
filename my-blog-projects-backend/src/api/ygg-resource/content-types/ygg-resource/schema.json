@@ -1,0 +1,81 @@
+{
+  "kind": "collectionType",
+  "collectionName": "ygg_resources",
+  "info": {
+    "singularName": "ygg-resource",
+    "pluralName": "ygg-resources",
+    "displayName": "YGG-Resource",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "unique": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "ygg_technologies": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::ygg-technology.ygg-technology"
+    },
+    "ygg_skills": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::ygg-skill.ygg-skill"
+    },
+    "logo": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "review": {
+      "type": "text",
+      "required": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "description": {
+      "type": "richtext",
+      "required": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "ygg_profiles": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::ygg-profile.ygg-profile"
+    },
+    "order": {
+      "type": "integer"
+    },
+    "url": {
+      "type": "string"
+    },
+    "slug": {
+      "type": "uid",
+      "required": true
+    }
+  }
+}

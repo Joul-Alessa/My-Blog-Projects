@@ -1,0 +1,111 @@
+{
+  "kind": "collectionType",
+  "collectionName": "mht_seasons",
+  "info": {
+    "singularName": "mht-season",
+    "pluralName": "mht-seasons",
+    "displayName": "MHT-Season",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "season_number": {
+      "type": "integer",
+      "required": true
+    },
+    "initial_watching_date": {
+      "type": "datetime",
+      "required": true
+    },
+    "initial_watching_date_format": {
+      "type": "enumeration",
+      "enum": [
+        "DD/MM/AAAA",
+        "??/MM/AAAA",
+        "??/??/AAAA"
+      ]
+    },
+    "end_watching_date": {
+      "type": "datetime"
+    },
+    "end_watching_date_format": {
+      "type": "enumeration",
+      "enum": [
+        "DD/MM/AAAA",
+        "??/MM/AAAA",
+        "??/??/AAAA"
+      ]
+    },
+    "logo": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "grade": {
+      "type": "decimal"
+    },
+    "mht_serie": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::mht-serie.mht-serie",
+      "inversedBy": "mht_seasons"
+    },
+    "review": {
+      "type": "text",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "description": {
+      "type": "richtext",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "mht_chapters": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::mht-chapter.mht-chapter",
+      "mappedBy": "mht_season"
+    },
+    "release_date": {
+      "type": "datetime",
+      "required": true
+    },
+    "release_date_format": {
+      "type": "enumeration",
+      "enum": [
+        "DD/MM/AAAA",
+        "??/MM/AAAA",
+        "??/??/AAAA"
+      ]
+    },
+    "slug": {
+      "type": "uid",
+      "required": true
+    }
+  }
+}

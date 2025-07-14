@@ -1,0 +1,64 @@
+{
+  "kind": "collectionType",
+  "collectionName": "mht_leagues",
+  "info": {
+    "singularName": "mht-league",
+    "pluralName": "mht-leagues",
+    "displayName": "MHT-League",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "logo": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "description": {
+      "type": "richtext",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "slug": {
+      "type": "uid",
+      "required": true
+    },
+    "mht_sport": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::mht-sport.mht-sport",
+      "inversedBy": "mht_leagues"
+    },
+    "mht_tournaments": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::mht-tournament.mht-tournament",
+      "mappedBy": "mht_league"
+    },
+    "grade": {
+      "type": "decimal"
+    }
+  }
+}

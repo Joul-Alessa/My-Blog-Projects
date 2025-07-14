@@ -1,0 +1,99 @@
+{
+  "kind": "collectionType",
+  "collectionName": "mht_videos",
+  "info": {
+    "singularName": "mht-video",
+    "pluralName": "mht-videos",
+    "displayName": "MHT-Video",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "release_date": {
+      "type": "datetime",
+      "required": true
+    },
+    "release_date_format": {
+      "type": "enumeration",
+      "enum": [
+        "DD/MM/AAAA",
+        "??/MM/AAAA",
+        "??/??/AAAA"
+      ]
+    },
+    "watching_date": {
+      "type": "datetime",
+      "required": true
+    },
+    "watching_date_format": {
+      "type": "enumeration",
+      "enum": [
+        "DD/MM/AAAA",
+        "??/MM/AAAA",
+        "??/??/AAAA"
+      ]
+    },
+    "review": {
+      "type": "text",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "description": {
+      "type": "richtext",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "slug": {
+      "type": "uid",
+      "required": true
+    },
+    "logo": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "grade": {
+      "type": "decimal"
+    },
+    "mht_channel": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::mht-channel.mht-channel",
+      "inversedBy": "mht_videos"
+    },
+    "mht_playlist": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::mht-playlist.mht-playlist",
+      "inversedBy": "mht_videos"
+    },
+    "url": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,78 @@
+{
+  "kind": "collectionType",
+  "collectionName": "mht_channels",
+  "info": {
+    "singularName": "mht-channel",
+    "pluralName": "mht-channels",
+    "displayName": "MHT-Channel",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "logo": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "initial_meeting_date": {
+      "type": "datetime",
+      "required": true
+    },
+    "initial_meeting_date_format": {
+      "type": "enumeration",
+      "enum": [
+        "DD/MM/AAAA",
+        "??/MM/AAAA",
+        "??/??/AAAA"
+      ]
+    },
+    "review": {
+      "type": "text",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "description": {
+      "type": "richtext",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "slug": {
+      "type": "uid",
+      "required": true
+    },
+    "mht_videos": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::mht-video.mht-video",
+      "mappedBy": "mht_channel"
+    },
+    "url": {
+      "type": "string"
+    }
+  }
+}

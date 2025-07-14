@@ -1,0 +1,82 @@
+{
+  "kind": "collectionType",
+  "collectionName": "mht_chapters",
+  "info": {
+    "singularName": "mht-chapter",
+    "pluralName": "mht-chapters",
+    "displayName": "MHT-Chapter",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "chapter_number": {
+      "type": "integer",
+      "required": true
+    },
+    "watching_date": {
+      "type": "datetime",
+      "required": true
+    },
+    "watching_date_format": {
+      "type": "enumeration",
+      "enum": [
+        "DD/MM/AAAA",
+        "??/MM/AAAA",
+        "??/??/AAAA"
+      ]
+    },
+    "grade": {
+      "type": "decimal"
+    },
+    "mht_season": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::mht-season.mht-season",
+      "inversedBy": "mht_chapters"
+    },
+    "review": {
+      "type": "text",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "description": {
+      "type": "richtext",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "slug": {
+      "type": "uid",
+      "required": true
+    },
+    "logo": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    }
+  }
+}

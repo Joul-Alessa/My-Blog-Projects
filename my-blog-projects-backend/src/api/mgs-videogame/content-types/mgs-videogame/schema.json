@@ -1,0 +1,80 @@
+{
+  "kind": "collectionType",
+  "collectionName": "mgs_videogames",
+  "info": {
+    "singularName": "mgs-videogame",
+    "pluralName": "mgs-videogames",
+    "displayName": "MGS-Videogame",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "description": {
+      "type": "richtext",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "logo": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "slug": {
+      "type": "uid",
+      "required": true
+    },
+    "release_date": {
+      "type": "datetime"
+    },
+    "started_playing_date": {
+      "type": "datetime"
+    },
+    "release_date_format": {
+      "type": "enumeration",
+      "enum": [
+        "DD/MM/AAAA",
+        "??/MM/AAAA",
+        "??/??/AAAA"
+      ]
+    },
+    "started_playing_date_format": {
+      "type": "enumeration",
+      "enum": [
+        "DD/MM/AAAA",
+        "??/MM/AAAA",
+        "??/??/AAAA"
+      ]
+    },
+    "mgs_series": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::mgs-serie.mgs-serie",
+      "mappedBy": "mgs_videogame"
+    },
+    "grade": {
+      "type": "decimal"
+    }
+  }
+}

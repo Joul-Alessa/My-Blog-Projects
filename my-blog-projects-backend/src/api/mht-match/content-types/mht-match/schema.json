@@ -1,0 +1,74 @@
+{
+  "kind": "collectionType",
+  "collectionName": "mht_matches",
+  "info": {
+    "singularName": "mht-match",
+    "pluralName": "mht-matches",
+    "displayName": "MHT-Match",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "watching_date": {
+      "type": "datetime",
+      "required": true
+    },
+    "watching_date_format": {
+      "type": "enumeration",
+      "enum": [
+        "DD/MM/AAAA",
+        "??/MM/AAAA",
+        "??/??/AAAA"
+      ]
+    },
+    "release_date": {
+      "type": "datetime",
+      "required": true
+    },
+    "release_date_format": {
+      "type": "enumeration",
+      "enum": [
+        "DD/MM/AAAA",
+        "??/MM/AAAA",
+        "??/??/AAAA"
+      ]
+    },
+    "grade": {
+      "type": "decimal"
+    },
+    "description": {
+      "type": "richtext",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "slug": {
+      "type": "uid",
+      "required": true
+    },
+    "mht_tournament": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::mht-tournament.mht-tournament",
+      "inversedBy": "mht_matches"
+    }
+  }
+}

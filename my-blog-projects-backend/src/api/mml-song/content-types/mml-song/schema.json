@@ -1,0 +1,80 @@
+{
+  "kind": "collectionType",
+  "collectionName": "mml_songs",
+  "info": {
+    "singularName": "mml-song",
+    "pluralName": "mml-songs",
+    "displayName": "MML-Song",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "slug": {
+      "type": "uid",
+      "required": true
+    },
+    "description": {
+      "type": "richtext",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "meeting_date": {
+      "type": "datetime",
+      "required": true
+    },
+    "meeting_date_format": {
+      "type": "enumeration",
+      "enum": [
+        "DD/MM/AAAA",
+        "??/MM/AAAA",
+        "??/??/AAAA"
+      ]
+    },
+    "grade": {
+      "type": "decimal"
+    },
+    "release_date": {
+      "type": "datetime",
+      "required": true
+    },
+    "release_date_format": {
+      "type": "enumeration",
+      "enum": [
+        "DD/MM/AAAA",
+        "??/MM/AAAA",
+        "??/??/AAAA"
+      ]
+    },
+    "mml_artists": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::mml-artist.mml-artist",
+      "mappedBy": "mml_songs"
+    },
+    "mml_albums": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::mml-album.mml-album",
+      "mappedBy": "mml_songs"
+    }
+  }
+}

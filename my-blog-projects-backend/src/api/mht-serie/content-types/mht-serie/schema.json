@@ -1,0 +1,107 @@
+{
+  "kind": "collectionType",
+  "collectionName": "mht_series",
+  "info": {
+    "singularName": "mht-serie",
+    "pluralName": "mht-series",
+    "displayName": "MHT-Serie",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "logo": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "initial_watching_date": {
+      "type": "datetime",
+      "required": true
+    },
+    "initial_watching_date_format": {
+      "type": "enumeration",
+      "enum": [
+        "DD/MM/AAAA",
+        "??/MM/AAAA",
+        "??/??/AAAA"
+      ]
+    },
+    "end_watching_date": {
+      "type": "datetime"
+    },
+    "end_watching_date_format": {
+      "type": "enumeration",
+      "enum": [
+        "DD/MM/AAAA",
+        "??/MM/AAAA",
+        "??/??/AAAA"
+      ]
+    },
+    "grade": {
+      "type": "decimal"
+    },
+    "mht_franchise": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::mht-franchise.mht-franchise",
+      "inversedBy": "mht_series"
+    },
+    "review": {
+      "type": "text",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "description": {
+      "type": "richtext",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "slug": {
+      "type": "uid",
+      "required": true
+    },
+    "release_date": {
+      "type": "datetime",
+      "required": true
+    },
+    "release_date_format": {
+      "type": "enumeration",
+      "enum": [
+        "DD/MM/AAAA",
+        "??/MM/AAAA",
+        "??/??/AAAA"
+      ]
+    },
+    "mht_seasons": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::mht-season.mht-season",
+      "mappedBy": "mht_serie"
+    }
+  }
+}

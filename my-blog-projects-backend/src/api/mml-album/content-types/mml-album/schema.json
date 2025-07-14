@@ -1,0 +1,91 @@
+{
+  "kind": "collectionType",
+  "collectionName": "mml_albums",
+  "info": {
+    "singularName": "mml-album",
+    "pluralName": "mml-albums",
+    "displayName": "MML-Album",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "slug": {
+      "type": "uid",
+      "required": true
+    },
+    "description": {
+      "type": "richtext",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "logo": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "meeting_date": {
+      "type": "datetime",
+      "required": true
+    },
+    "meeting_date_format": {
+      "type": "enumeration",
+      "enum": [
+        "DD/MM/AAAA",
+        "??/MM/AAAA",
+        "??/??/AAAA"
+      ]
+    },
+    "release_date": {
+      "type": "datetime",
+      "required": true
+    },
+    "release_date_format": {
+      "type": "enumeration",
+      "enum": [
+        "DD/MM/AAAA",
+        "??/MM/AAAA",
+        "??/??/AAAA"
+      ]
+    },
+    "grade": {
+      "type": "decimal"
+    },
+    "album_type": {
+      "type": "enumeration",
+      "enum": [
+        "album",
+        "ep",
+        "single",
+        "compilation"
+      ]
+    },
+    "mml_songs": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::mml-song.mml-song",
+      "inversedBy": "mml_albums"
+    }
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "kind": "collectionType",
+  "collectionName": "ygg_profiles",
+  "info": {
+    "singularName": "ygg-profile",
+    "pluralName": "ygg-profiles",
+    "displayName": "YGG-Profile"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "unique": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "slug": {
+      "type": "uid",
+      "required": true
+    }
+  }
+}
