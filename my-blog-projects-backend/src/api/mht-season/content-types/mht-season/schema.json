@@ -25,10 +25,6 @@
         }
       }
     },
-    "season_number": {
-      "type": "integer",
-      "required": true
-    },
     "initial_watching_date": {
       "type": "datetime",
       "required": true
@@ -105,6 +101,10 @@
     },
     "slug": {
       "type": "uid",
+      "required": true
+    },
+    "season_number": {
+      "type": "string",
       "required": true
     }
   }

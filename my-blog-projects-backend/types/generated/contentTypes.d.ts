@@ -973,7 +973,7 @@ export interface ApiMhtSeasonMhtSeason extends Struct.CollectionTypeSchema {
           localized: true;
         };
       }>;
-    season_number: Schema.Attribute.Integer & Schema.Attribute.Required;
+    season_number: Schema.Attribute.String & Schema.Attribute.Required;
     slug: Schema.Attribute.UID & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
