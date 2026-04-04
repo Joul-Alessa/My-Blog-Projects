@@ -1554,6 +1554,7 @@ export interface ApiYggJobYggJob extends Struct.CollectionTypeSchema {
     };
   };
   attributes: {
+    background_color: Schema.Attribute.String & Schema.Attribute.Required;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1850,6 +1851,7 @@ export interface ApiYggStudyYggStudy extends Struct.CollectionTypeSchema {
     };
   };
   attributes: {
+    background_color: Schema.Attribute.String & Schema.Attribute.Required;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
