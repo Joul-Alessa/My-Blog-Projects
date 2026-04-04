@@ -973,7 +973,7 @@ export interface ApiMhtSeasonMhtSeason extends Struct.CollectionTypeSchema {
           localized: true;
         };
       }>;
-    season_number: Schema.Attribute.Integer & Schema.Attribute.Required;
+    season_number: Schema.Attribute.String & Schema.Attribute.Required;
     slug: Schema.Attribute.UID & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -1554,6 +1554,7 @@ export interface ApiYggJobYggJob extends Struct.CollectionTypeSchema {
     };
   };
   attributes: {
+    background_color: Schema.Attribute.String & Schema.Attribute.Required;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1850,6 +1851,7 @@ export interface ApiYggStudyYggStudy extends Struct.CollectionTypeSchema {
     };
   };
   attributes: {
+    background_color: Schema.Attribute.String & Schema.Attribute.Required;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;

@@ -13,7 +13,7 @@ module.exports = createCoreController('api::ygg-study.ygg-study', ({ strapi }) =
     const locale = query.locale === undefined ? 'en' : query.locale;
 
     const entity = await strapi.db.query('api::ygg-study.ygg-study').findMany({
-      select: ['school', 'study', 'slug', 'initial_date', 'end_date', 'description', 'order', 'locale'],
+      select: ['school', 'study', 'slug', 'initial_date', 'end_date', 'description', 'order', 'locale', 'background_color'],
       where: {
         locale,
         publishedAt: {
@@ -39,7 +39,7 @@ module.exports = createCoreController('api::ygg-study.ygg-study', ({ strapi }) =
     const locale = query.locale === undefined ? 'en' : query.locale;
 
     const entity = await strapi.db.query('api::ygg-study.ygg-study').findOne({
-      select: ['school', 'study', 'slug', 'initial_date', 'end_date', 'description', 'order', 'locale'],
+      select: ['school', 'study', 'slug', 'initial_date', 'end_date', 'description', 'order', 'locale', 'background_color'],
       where: {
         slug,
         locale,

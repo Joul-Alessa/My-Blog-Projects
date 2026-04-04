@@ -63,6 +63,11 @@
     "slug": {
       "type": "uid",
       "required": true
+    },
+    "background_color": {
+      "type": "string",
+      "regex": "^#([A-Fa-f0-9]{6})$",
+      "required": true
     }
   }
 }

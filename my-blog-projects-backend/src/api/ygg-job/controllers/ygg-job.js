@@ -13,7 +13,7 @@ module.exports = createCoreController('api::ygg-job.ygg-job', ({ strapi }) => ({
     const locale = query.locale === undefined ? 'en' : query.locale;
 
     const entity = await strapi.db.query('api::ygg-job.ygg-job').findMany({
-      select: ['workplace', 'position', 'slug', 'initial_date', 'end_date', 'description', 'order', 'locale'],
+      select: ['workplace', 'position', 'slug', 'initial_date', 'end_date', 'description', 'order', 'locale', 'background_color'],
       where: {
         locale,
         publishedAt: {
@@ -47,7 +47,7 @@ module.exports = createCoreController('api::ygg-job.ygg-job', ({ strapi }) => ({
     const locale = query.locale === undefined ? 'en' : query.locale;
 
     const entity = await strapi.db.query('api::ygg-job.ygg-job').findOne({
-      select: ['workplace', 'position', 'slug', 'initial_date', 'end_date', 'description', 'order', 'locale'],
+      select: ['workplace', 'position', 'slug', 'initial_date', 'end_date', 'description', 'order', 'locale', 'background_color'],
       where: {
         slug,
         locale,
